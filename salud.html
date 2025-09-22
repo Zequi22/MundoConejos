@@ -1,99 +1,61 @@
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salud de Conejos - Mundo de los Conejos</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Salud — Mundo de los Conejos</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">🐰 Mundo de los Conejos</div>
-        <nav>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span>☰</span>
-            </label>
-            <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="tipos-de-conejos.html">Tipos de Conejos</a></li>
-                <li><a href="alimentacion.html">Alimentación</a></li>
-                <li><a href="cuidados.html">Cuidados</a></li>
-                <li><a href="salud.html">Salud</a></li>
-                <li><a href="cultura.html">Cultura</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header >
+    <div class="brand">
+      <div class="logo">MC</div>
+      <div>
+        <div class="title">Mundo de los Conejos</div>
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.85)">Guía visual — cuidado y cultura</div>
+      </div>
+    </div>
 
-    <main>
-        <section id="salud" class="salud">
-            <h2>Salud y Prevención</h2>
-            <div class="salud-grid">
-                <div class="salud-item senales-salud">
-                    <h3>Señales de Buena Salud</h3>
-                    <ul>
-                        <li>✅ Pelaje brillante y uniforme</li>
-                        <li>✅ Apetito constante</li>
-                        <li>✅ Actividad regular</li>
-                        <li>✅ Deposiciones normales</li>
-                        <li>✅ Ojos brillantes</li>
-                        <li>✅ Peso estable</li>
-                    </ul>
-                </div>
-                
-                <div class="salud-item enfermedades">
-                    <h3>Enfermedades Comunes</h3>
-                    <ul>
-                        <li>❗ Estasis Gastrointestinal
-                            <ul>
-                                <li>Síntomas: Heces pequeñas</li>
-                                <li>Tratamiento: Urgencia veterinaria</li>
-                            </ul>
-                        </li>
-                        <li>❗ Maloclusión Dental
-                            <ul>
-                                <li>Causa: Crecimiento excesivo</li>
-                                <li>Solución: Limado profesional</li>
-                            </ul>
-                        </li>
-                        <li>❗ Ácaros y Parásitos
-                            <ul>
-                                <li>Síntomas: Costras, caída de pelo</li>
-                                <li>Tratamiento: Ivermectina</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="salud-item prevencion">
-                    <h3>Prevención</h3>
-                    <ul>
-                        <li>💉 Vacunas anuales
-                            <ul>
-                                <li>Mixomatosis</li>
-                                <li>Enfermedad hemorrágica</li>
-                            </ul>
-                        </li>
-                        <li>🏥 Revisiones veterinarias
-                            <ul>
-                                <li>Chequeo dental</li>
-                                <li>Control de peso</li>
-                                <li>Desparasitación</li>
-                            </ul>
-                        </li>
-                        <li>🍽️ Dieta balanceada</li>
-                        <li>🧼 Higiene del hábitat</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+    <nav>
+      <a href="index.html" >Inicio</a>
+      <a href="tipos.html">Tipos</a>
+      <a href="cuidados.html">Cuidados</a>
+      <a href="alimentacion.html">Alimentación</a>
+      <a href="salud.html"class="active">Salud</a>
+      <a href="cultura.html">Cultura</a>
+    </nav>
+  </header>
 
-    <footer>
-        <p> 2023 Mundo de los Conejos. Guía Completa de Cuidados.</p>
-    </footer>
+  <main class="container">
+    <section class="content-section">
+      <h2>Enfermedades comunes y prevención</h2>
 
-    <script src="animations.js"></script>
+      <h3>GI Stasis (estasis gastrointestinal)</h3>
+      <p>Es una condición urgente en la que el intestino ralentiza o se para. Causas: baja fibra, estrés, dolor, deshidratación o problemas dentales. Si tu conejo deja de comer o deja de producir heces, consulta al veterinario de inmediato: puede requerir fluidos, analgesia y manejo nutricional. (Prevención: heno constante, hidratación y manejo del estrés).</p>
+
+      <h3>Problemas dentales</h3>
+      <p>Los dientes de los conejos crecen continuamente; maloclusiones o desgaste insuficiente (por falta de fibra) pueden producir sobrecrecimientos dolorosos. El heno y masticables adecuados ayudan a prevenirlo.</p>
+
+      <h3>Enfermedades víricas: Myxomatosis y RHD (RHDV2)</h3>
+      <p>Son enfermedades muy graves y contagiosas en conejos. En zonas donde circulan, la vacunación y limitar contacto con conejos externos son medidas esenciales. Consulta el calendario de vacunación local con tu veterinario.</p>
+
+      <h3>Signos de alarma (cuando actuar urgentemente)</h3>
+      <ul>
+        <li>No comer durante >12 horas.</li>
+        <li>Ausencia de heces o heces muy pequeñas y secas.</li>
+        <li>Respiración dificultosa, ojos/nariz con secreción, cojera o postura encorvada por dolor.</li>
+      </ul>
+
+      <div style="margin-top:10px">
+        <h4>Recomendaciones preventivas</h4>
+        <ul>
+          <li>Revisiones veterinarias anuales con profesional en exóticos.</li>
+          <li>Esterilización para reducir ciertos riesgos de salud y problemas de conducta.</li>
+          <li>Vacunación según zona (consulta a tu veterinario sobre RHDV2/myxomatosis).</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Mundo de los Conejos</footer>
 </body>
 </html>

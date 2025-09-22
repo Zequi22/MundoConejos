@@ -1,102 +1,59 @@
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuidados de Conejos - Mundo de los Conejos</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Cuidados — Mundo de los Conejos</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <header>
-        <div class="logo">🐰 Mundo de los Conejos</div>
-        <nav>
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span>☰</span>
-            </label>
-            <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="tipos-de-conejos.html">Tipos de Conejos</a></li>
-                <li><a href="alimentacion.html">Alimentación</a></li>
-                <li><a href="cuidados.html">Cuidados</a></li>
-                <li><a href="salud.html">Salud</a></li>
-                <li><a href="cultura.html">Cultura</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header >
+    <div class="brand">
+      <div class="logo">MC</div>
+      <div>
+        <div class="title">Mundo de los Conejos</div>
+        <div style="font-size:0.85rem; color:rgba(255,255,255,0.85)">Guía visual — cuidado y cultura</div>
+      </div>
+    </div>
 
-    <main>
-        <section id="cuidados" class="cuidados">
-            <h2>Cuidados Esenciales</h2>
-            <div class="cuidados-grid">
-                <div class="cuidado-item habitat">
-                    <div class="icon">🏡</div>
-                    <h3>Hábitat Ideal</h3>
-                    <ul>
-                        <li><strong>Espacio mínimo:</strong> 1.5 m² por conejo</li>
-                        <li><strong>Características de la Jaula:</strong>
-                            <ul>
-                                <li>Base sólida</li>
-                                <li>Área de descanso separada</li>
-                                <li>Refugio de cartón o madera</li>
-                            </ul>
-                        </li>
-                        <li><strong>Temperatura Óptima:</strong> 15-21°C</li>
-                        <li>Evitar corrientes y calor excesivo</li>
-                    </ul>
-                </div>
+    <nav>
+      <a href="index.html" >Inicio</a>
+      <a href="tipos.html">Tipos</a>
+      <a href="cuidados.html" class="active">Cuidados</a>
+      <a href="alimentacion.html">Alimentación</a>
+      <a href="salud.html">Salud</a>
+      <a href="cultura.html">Cultura</a>
+    </nav>
+  </header>
 
-                <div class="cuidado-item enriquecimiento">
-                    <div class="icon">🧸</div>
-                    <h3>Enriquecimiento Ambiental</h3>
-                    <ul>
-                        <li><strong>Juguetes Recomendados:</strong>
-                            <ul>
-                                <li>Túneles de cartón</li>
-                                <li>Pelotas de mimbre</li>
-                                <li>Maderas no tratadas</li>
-                                <li>Juguetes para roer</li>
-                            </ul>
-                        </li>
-                        <li><strong>Ejercicio:</strong>
-                            <ul>
-                                <li>3-4 horas diarias fuera de la jaula</li>
-                                <li>Supervisión constante</li>
-                                <li>Circuitos de exploración seguros</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+  <main class="container">
+    <section class="content-section">
+      <h2>Vivienda y espacio</h2>
+      <p>Un conejo debe tener una zona segura amplia (no una jaula pequeña todo el día): se recomiendan áreas cerradas para la noche y tiempo de libertad supervisada para ejercitarse varias horas al día.</p>
 
-                <div class="cuidado-item socializacion">
-                    <div class="icon">❤️</div>
-                    <h3>Socialización</h3>
-                    <ul>
-                        <li><strong>Lenguaje Corporal:</strong>
-                            <ul>
-                                <li>Panza arriba: Confianza</li>
-                                <li>Orejas atrás: Estrés</li>
-                                <li>Chin resting: Marcaje</li>
-                            </ul>
-                        </li>
-                        <li><strong>Comunicación:</strong>
-                            <ul>
-                                <li>Ronroneo: Contento</li>
-                                <li>Gruñidos: Advertencia</li>
-                            </ul>
-                        </li>
-                        <li>Interacción diaria crucial</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+      <h3>Limpieza e higiene</h3>
+      <ul>
+        <li>Limpia la bandeja de heces diariamente y cambia la cama regularmente.</li>
+        <li>Evita duchas frecuentes: el baño completo suele estresar al conejo; usa toallitas o baños de patas sólo si es imprescindible.</li>
+      </ul>
 
-    <footer>
-        <p>© 2023 Mundo de los Conejos. Guía Completa de Cuidados.</p>
-    </footer>
+      <h3>Grooming</h3>
+      <p>Cepillado regular para eliminar pelo suelto — especialmente en muda y en razas de pelo largo. Revisa ojos, orejas y uñas periódicamente.</p>
 
-    <script src="animations.js"></script>
+      <h3>Enriquecimiento y socialización</h3>
+      <p>Juguetes para roer, túneles, cajas y sesiones de juego mantienen la estimulación mental. Los conejos son animales sociales y se benefician de interacciones diarias y, si es posible, de la compañía de otro conejo compatible (con supervisión y proceso de introducción adecuado).</p>
+
+      <div style="margin-top:10px">
+        <h4>Checklist diario</h4>
+        <ul>
+          <li>Agua fresca</li>
+          <li>Heno ilimitado</li>
+          <li>Revisión rápida (apetito, deposiciones, comportamiento)</li>
+          <li>Tiempo de ejercicio y contacto</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 Mundo de los Conejos</footer>
 </body>
 </html>
