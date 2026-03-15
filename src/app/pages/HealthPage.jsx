@@ -89,9 +89,9 @@ const emergencySigns = [
 
 export default function HealthPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
+      <section className="relative py-20 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl mb-6">
@@ -106,7 +106,7 @@ export default function HealthPage() {
 
       {/* Alert Section */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Alert className="border-2 border-blue-300 bg-gradient-to-r from-blue-50 to-cyan-50 shadow-lg">
+        <Alert className="border-2 border-accent bg-accent/5 shadow-lg">
           <Activity className="h-6 w-6 text-blue-600" />
           <AlertTitle className="text-blue-900 text-xl">Importante sobre los Conejos</AlertTitle>
           <AlertDescription className="text-blue-800 text-base">
@@ -126,8 +126,8 @@ export default function HealthPage() {
             <Card key={index} className={`
               border-2 hover:shadow-2xl transition-all
               ${issue.urgency === 'high' 
-                ? 'border-red-300 bg-gradient-to-br from-red-50 to-rose-50' 
-                : 'border-yellow-300 bg-gradient-to-br from-yellow-50 to-amber-50'}
+                ? 'border-destructive bg-destructive/10' 
+                : 'border-secondary bg-secondary/10'}
             `}>
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
@@ -168,7 +168,7 @@ export default function HealthPage() {
         <h2 className="text-4xl text-center mb-12">Lista de Verificación de Salud</h2>
         
         <div className="grid md:grid-cols-3 gap-6">
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-green-50 to-emerald-50">
+          <Card className="border-0 shadow-xl bg-primary/10">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-green-800">
                 <CheckCircle2 className="w-6 h-6" />
@@ -187,7 +187,7 @@ export default function HealthPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-blue-50 to-cyan-50">
+          <Card className="border-0 shadow-xl bg-secondary/10">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-blue-800">
                 <Activity className="w-6 h-6" />
@@ -206,7 +206,7 @@ export default function HealthPage() {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-purple-50 to-fuchsia-50">
+          <Card className="border-0 shadow-xl bg-accent/10">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-purple-800">
                 <Shield className="w-6 h-6" />
@@ -229,7 +229,7 @@ export default function HealthPage() {
 
       {/* Emergency Signs */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-gradient-to-r from-red-600 to-rose-600 rounded-2xl p-8 text-white shadow-2xl">
+        <div className="bg-destructive rounded-2xl p-8 text-white shadow-2xl">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
               <AlertCircle className="w-10 h-10" />

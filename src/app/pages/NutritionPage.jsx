@@ -60,16 +60,16 @@ const badFoods = [
 ];
 
 const colorGradients = {
-  green: 'from-green-500 to-emerald-500',
-  blue: 'from-blue-500 to-cyan-500',
-  purple: 'from-purple-500 to-fuchsia-500'
+  green: 'bg-secondary',
+  blue: 'bg-accent',
+  purple: 'bg-primary'
 };
 
 export default function NutritionPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+      <section className="relative py-20 bg-secondary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl mb-6">
@@ -102,13 +102,13 @@ export default function NutritionPage() {
             const Icon = component.icon;
             return (
               <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden">
-                <div className={`h-1.5 bg-gradient-to-r ${colorGradients[component.color as keyof typeof colorGradients]}`}></div>
+                <div className={`h-1.5 ${colorGradients[component.color]}`}></div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${colorGradients[component.color as keyof typeof colorGradients]}`}>
+                    <div className={`p-3 rounded-xl ${colorGradients[component.color]}`}>
                       <Icon className="w-6 h-6 text-white" />
                     </div>
-                    <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <div className="text-3xl font-bold text-primary">
                       {component.percentage}
                     </div>
                   </div>
@@ -136,9 +136,9 @@ export default function NutritionPage() {
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Good Foods */}
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border-2 border-green-200 shadow-lg">
+          <div className="bg-secondary/10 p-8 rounded-2xl border-2 border-secondary shadow-lg">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-green-500 rounded-xl">
+              <div className="p-3 bg-secondary rounded-xl">
                 <Check className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl text-green-800">Alimentos Permitidos</h3>
@@ -159,9 +159,9 @@ export default function NutritionPage() {
           </div>
 
           {/* Bad Foods */}
-          <div className="bg-gradient-to-br from-red-50 to-rose-50 p-8 rounded-2xl border-2 border-red-200 shadow-lg">
+          <div className="bg-destructive/10 p-8 rounded-2xl border-2 border-destructive shadow-lg">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-red-500 rounded-xl">
+              <div className="p-3 bg-destructive rounded-xl">
                 <X className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-3xl text-red-800">Alimentos Prohibidos</h3>
@@ -185,7 +185,7 @@ export default function NutritionPage() {
 
       {/* Water Section */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-8 text-white shadow-2xl">
+        <div className="bg-accent rounded-2xl p-8 text-white shadow-2xl">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
               <Droplet className="w-8 h-8" />

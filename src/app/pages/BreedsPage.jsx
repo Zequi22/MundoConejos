@@ -67,19 +67,19 @@ const breeds = [
 ];
 
 const colorClasses = {
-  blue: 'from-blue-500 to-cyan-500',
-  orange: 'from-orange-500 to-amber-500',
-  purple: 'from-purple-500 to-fuchsia-500',
-  green: 'from-green-500 to-emerald-500',
-  pink: 'from-pink-500 to-rose-500',
-  indigo: 'from-indigo-500 to-blue-500'
+  blue: 'bg-accent',
+  orange: 'bg-secondary',
+  purple: 'bg-primary',
+  green: 'bg-secondary',
+  pink: 'bg-accent',
+  indigo: 'bg-primary'
 };
 
 export default function BreedsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section className="relative py-20 bg-primary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl mb-6">
@@ -105,7 +105,7 @@ export default function BreedsPage() {
 
       {/* Info Section */}
       <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 mb-12">
+        <div className="bg-accent/10 rounded-2xl p-8 mb-12">
           <h2 className="text-3xl mb-4 text-center">Más de 300 Razas en el Mundo</h2>
           <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto">
             Existen más de 300 razas de conejos reconocidas en todo el mundo, cada una con características únicas. 
@@ -119,7 +119,7 @@ export default function BreedsPage() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {breeds.map((breed, index) => (
             <Card key={index} className="hover:shadow-2xl transition-all duration-300 border-0 overflow-hidden group">
-              <div className={`h-2 bg-gradient-to-r ${colorClasses[breed.color as keyof typeof colorClasses]}`}></div>
+              <div className={`h-2 ${colorClasses[breed.color]}`}></div>
               
               <CardHeader>
                 <CardTitle className="text-2xl group-hover:text-purple-600 transition-colors">

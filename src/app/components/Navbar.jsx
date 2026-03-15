@@ -15,7 +15,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 shadow-lg sticky top-0 z-50">
+    <nav className="bg-primary shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <NavLink to="/" className="flex items-center gap-2 text-white group">

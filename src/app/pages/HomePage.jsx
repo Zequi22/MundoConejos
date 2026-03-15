@@ -9,28 +9,28 @@ const features = [
     title: 'Razas',
     description: 'Descubre las diferentes razas de conejos y sus características únicas',
     link: '/razas',
-    gradient: 'from-blue-500 to-cyan-500'
+    gradient: 'bg-primary'
   },
   {
     icon: Apple,
     title: 'Alimentación',
     description: 'Guía completa sobre qué comer y qué evitar para mantener a tu conejo saludable',
     link: '/alimentacion',
-    gradient: 'from-green-500 to-emerald-500'
+    gradient: 'bg-secondary'
   },
   {
     icon: Heart,
     title: 'Cuidados',
     description: 'Todo sobre el habitat, higiene, socialización y ejercicio de tu conejo',
     link: '/cuidados',
-    gradient: 'from-pink-500 to-rose-500'
+    gradient: 'bg-accent'
   },
   {
     icon: Stethoscope,
     title: 'Salud',
     description: 'Aprende a identificar signos de salud y problemas comunes',
     link: '/salud',
-    gradient: 'from-purple-500 to-indigo-500'
+    gradient: 'bg-primary'
   }
 ];
 
@@ -46,7 +46,7 @@ export default function HomePage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-pink-800 to-orange-700">
+        <div className="absolute inset-0 bg-primary/90">
           <div className="absolute inset-0 opacity-20">
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1747184046952-8890127c598a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwcmFiYml0JTIwYnVubnl8ZW58MXx8fHwxNzczNDk2MjQ0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -65,7 +65,7 @@ export default function HomePage() {
             
             <h1 className="text-5xl md:text-7xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
               Todo Sobre
-              <span className="block bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">
+              <span className="block text-accent">
                 Conejos
               </span>
             </h1>
@@ -102,7 +102,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                 <div className="text-4xl md:text-5xl text-primary mb-2">
                   {stat.value}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -113,7 +113,7 @@ export default function HomePage() {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl mb-4">
@@ -131,7 +131,7 @@ export default function HomePage() {
                 <Link key={index} to={feature.link} className="group">
                   <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-purple-200 overflow-hidden">
                     <CardContent className="p-8">
-                      <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${feature.gradient} mb-6 group-hover:scale-110 transition-transform`}>
+                      <div className={`inline-flex p-4 rounded-2xl ${feature.gradient} mb-6 group-hover:scale-110 transition-transform`}>
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       
@@ -157,7 +157,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500">
+      <section className="py-20 bg-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <Shield className="w-16 h-16 mx-auto mb-6 opacity-90" />
           <h2 className="text-3xl md:text-4xl mb-4">

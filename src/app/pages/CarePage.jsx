@@ -8,7 +8,7 @@ const careCategories = [
     id: 'habitat',
     icon: Home,
     title: "Hábitat",
-    color: "from-blue-500 to-cyan-500",
+    color: "bg-primary",
     sections: [
       {
         subtitle: "Tamaño del Espacio",
@@ -45,7 +45,7 @@ const careCategories = [
     id: 'hygiene',
     icon: Scissors,
     title: "Higiene y Cepillado",
-    color: "from-purple-500 to-fuchsia-500",
+    color: "bg-secondary",
     sections: [
       {
         subtitle: "Cepillado Regular",
@@ -83,7 +83,7 @@ const careCategories = [
     id: 'exercise',
     icon: Activity,
     title: "Ejercicio y Juego",
-    color: "from-green-500 to-emerald-500",
+    color: "bg-accent",
     sections: [
       {
         subtitle: "Tiempo Fuera de la Jaula",
@@ -121,7 +121,7 @@ const careCategories = [
     id: 'social',
     icon: Users,
     title: "Socialización",
-    color: "from-pink-500 to-rose-500",
+    color: "bg-primary",
     sections: [
       {
         subtitle: "Interacción Humana",
@@ -159,9 +159,9 @@ const careCategories = [
 
 export default function CarePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-pink-600 to-purple-600 text-white">
+      <section className="relative py-20 bg-accent text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl mb-6">
@@ -197,7 +197,7 @@ export default function CarePage() {
                   value={category.id}
                   className="flex flex-col items-center gap-2 p-4 data-[state=active]:bg-white data-[state=active]:shadow-lg rounded-xl"
                 >
-                  <div className={`p-3 rounded-lg bg-gradient-to-br ${category.color}`}>
+                  <div className={`p-3 rounded-lg ${category.color}`}>
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-sm font-medium">{category.title}</span>
@@ -213,7 +213,7 @@ export default function CarePage() {
                 <Card className="border-0 shadow-xl">
                   <CardHeader>
                     <div className="flex items-center gap-4 mb-2">
-                      <div className={`p-4 rounded-xl bg-gradient-to-br ${category.color}`}>
+                      <div className={`p-4 rounded-xl ${category.color}`}>
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       <CardTitle className="text-3xl">{category.title}</CardTitle>
@@ -221,7 +221,7 @@ export default function CarePage() {
                   </CardHeader>
                   <CardContent className="space-y-8">
                     {category.sections.map((section, idx) => (
-                      <div key={idx} className="bg-gradient-to-r from-gray-50 to-white p-6 rounded-xl border">
+                      <div key={idx} className="bg-white p-6 rounded-xl border">
                         <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                           <Sparkles className="w-5 h-5 text-purple-600" />
                           {section.subtitle}
@@ -229,7 +229,7 @@ export default function CarePage() {
                         <ul className="space-y-3">
                           {section.items.map((item, i) => (
                             <li key={i} className="flex items-start gap-3">
-                              <div className="mt-1 w-2 h-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex-shrink-0"></div>
+                              <div className="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
                               <span className="text-gray-700">{item}</span>
                             </li>
                           ))}
@@ -246,7 +246,7 @@ export default function CarePage() {
 
       {/* Quick Tips */}
       <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-2xl p-8 text-white shadow-2xl">
+        <div className="bg-secondary rounded-2xl p-8 text-white shadow-2xl">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
               <Heart className="w-8 h-8" />

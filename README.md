@@ -17,16 +17,4 @@ Para visualizar este proyecto en tu máquina local, sigue estos pasos:
    ```bash
    npm run dev
    ```
-   Luego, abre tu navegador en la dirección que aparezca en la terminal (usualmente `http://localhost:5173`).
 
-## 📁 Repositorio GitHub
-
-Este proyecto está preparado para ser subido a:
-[https://github.com/Zequi22/MundoConejos](https://github.com/Zequi22/MundoConejos)
-
-Para subir tus cambios:
-```bash
-git add .
-git commit -m "Actualización: Nueva paleta de colores y preparación para GitHub"
-git push origin main
-```

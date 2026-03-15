@@ -101,9 +101,9 @@ const faqCategories = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-r from-orange-600 to-pink-600 text-white">
+      <section className="relative py-20 bg-secondary text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-6">
@@ -153,7 +153,7 @@ export default function FAQPage() {
 
       {/* CTA Section */}
       <section className="py-16 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-8 border-2 border-purple-200">
+        <div className="bg-primary/10 rounded-2xl p-8 border-2 border-primary">
           <div className="text-center">
             <h3 className="text-2xl mb-4 text-purple-900">¿No encuentras tu respuesta?</h3>
             <p className="text-gray-700 mb-6">
