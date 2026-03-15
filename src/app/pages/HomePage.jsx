@@ -5,28 +5,28 @@ import { Card, CardContent } from '../components/ui/card';
 
 const features = [
   {
-    icon,
+    icon: BookOpen,
     title: 'Razas',
     description: 'Descubre las diferentes razas de conejos y sus características únicas',
     link: '/razas',
     gradient: 'bg-primary'
   },
   {
-    icon,
+    icon: Apple,
     title: 'Alimentación',
     description: 'Guía completa sobre qué comer y qué evitar para mantener a tu conejo saludable',
     link: '/alimentacion',
     gradient: 'bg-secondary'
   },
   {
-    icon,
+    icon: Heart,
     title: 'Cuidados',
     description: 'Todo sobre el habitat, higiene, socialización y ejercicio de tu conejo',
     link: '/cuidados',
     gradient: 'bg-accent'
   },
   {
-    icon,
+    icon: Stethoscope,
     title: 'Salud',
     description: 'Aprende a identificar signos de salud y problemas comunes',
     link: '/salud',
@@ -56,35 +56,35 @@ export default function HomePage() {
           </div>
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm-6 lg-8 py-24">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
               <Sparkles className="w-4 h-4" />
               <span className="text-sm">Guía Completa de Cuidado</span>
             </div>
             
-            <h1 className="text-5xl md-7xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <h1 className="text-5xl md:text-7xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
               Todo Sobre
               <span className="block text-accent">
                 Conejos
               </span>
             </h1>
             
-            <p className="text-xl md-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
               La guía definitiva para cuidar, alimentar y mantener feliz a tu conejo mascota
             </p>
             
-            <div className="flex flex-col sm-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/razas"
-                className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full hover-gray-100 transition-all transform hover-105 shadow-lg"
+                className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
               >
                 Explorar Razas
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/cuidados"
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full hover-white/20 transition-all border-2 border-white/30"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all border-2 border-white/30"
               >
                 Guía de Cuidados
               </Link>
@@ -99,10 +99,10 @@ export default function HomePage() {
       {/* Stats Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
-          <div className="grid grid-cols-2 md-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                 <div className="text-4xl md-5xl text-primary mb-2">
+                 <div className="text-4xl md:text-5xl text-primary mb-2">
                   {stat.value}
                 </div>
                 <div className="text-gray-600">{stat.label}</div>
@@ -114,9 +114,9 @@ export default function HomePage() {
 
       {/* Features Grid */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md-5xl mb-4">
+            <h2 className="text-4xl md:text-5xl mb-4">
               Explora Nuestra Guía
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -124,18 +124,18 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid md-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
                 <Link key={index} to={feature.link} className="group">
-                  <Card className="h-full hover-2xl transition-all duration-300 border-2 hover-purple-200 overflow-hidden">
+                  <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-purple-200 overflow-hidden">
                     <CardContent className="p-8">
-                      <div className={`inline-flex p-4 rounded-2xl ${feature.gradient} mb-6 group-hover-110 transition-transform`}>
+                      <div className={`inline-flex p-4 rounded-2xl ${feature.gradient} mb-6 group-hover:scale-110 transition-transform`}>
                         <Icon className="w-8 h-8 text-white" />
                       </div>
                       
-                      <h3 className="text-2xl mb-3 group-hover-purple-600 transition-colors">
+                      <h3 className="text-2xl mb-3 group-hover:text-purple-600 transition-colors">
                         {feature.title}
                       </h3>
                       
@@ -143,7 +143,7 @@ export default function HomePage() {
                         {feature.description}
                       </p>
                       
-                      <div className="flex items-center gap-2 text-purple-600 group-hover-4 transition-all">
+                      <div className="flex items-center gap-2 text-purple-600 group-hover:translate-x-4 transition-all">
                         <span>Explorar</span>
                         <ArrowRight className="w-4 h-4" />
                       </div>
@@ -158,9 +158,9 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 sm-6 lg-8 text-center text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <Shield className="w-16 h-16 mx-auto mb-6 opacity-90" />
-          <h2 className="text-3xl md-4xl mb-4">
+          <h2 className="text-3xl md:text-4xl mb-4">
             ¿Tienes Preguntas?
           </h2>
           <p className="text-xl mb-8 text-gray-100">
@@ -168,7 +168,7 @@ export default function HomePage() {
           </p>
           <Link
             to="/faq"
-            className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full hover-gray-100 transition-all transform hover-105 shadow-lg"
+            className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
           >
             Ver Preguntas Frecuentes
             <ArrowRight className="w-5 h-5" />
