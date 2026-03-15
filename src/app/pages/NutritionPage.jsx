@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card'
 
 const dietComponents = [
   {
-    icon: Leaf,
+    icon,
     title: 'Heno',
     percentage: '80%',
     description: 'Base de la alimentación',
@@ -13,7 +13,7 @@ const dietComponents = [
     color: 'green'
   },
   {
-    icon: Leaf,
+    icon,
     title: 'Vegetales Frescos',
     percentage: '10-15%',
     description: 'Nutrientes esenciales',
@@ -22,7 +22,7 @@ const dietComponents = [
     color: 'blue'
   },
   {
-    icon: Leaf,
+    icon,
     title: 'Pellets',
     percentage: '5-10%',
     description: 'Complemento nutricional',
@@ -70,12 +70,12 @@ export default function NutritionPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 bg-secondary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
+            <h1 className="text-5xl md-6xl mb-6">
               Alimentación
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl md-2xl text-gray-100 max-w-3xl mx-auto">
               Una dieta equilibrada es fundamental para la salud y longevidad de tu conejo
             </p>
           </div>
@@ -83,7 +83,7 @@ export default function NutritionPage() {
       </section>
 
       {/* Image Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <div className="rounded-2xl overflow-hidden shadow-2xl">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1695827406639-befb948fb513?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWJiaXQlMjBlYXRpbmclMjB2ZWdldGFibGVzfGVufDF8fHx8MTc3MzUxNTc3Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -94,14 +94,14 @@ export default function NutritionPage() {
       </section>
 
       {/* Diet Components */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <h2 className="text-4xl text-center mb-12">Componentes de una Dieta Balanceada</h2>
         
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md-cols-3 gap-8 mb-16">
           {dietComponents.map((component, index) => {
             const Icon = component.icon;
             return (
-              <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden">
+              <Card key={index} className="border-0 shadow-xl hover-2xl transition-all overflow-hidden">
                 <div className={`h-1.5 ${colorGradients[component.color]}`}></div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
@@ -133,8 +133,8 @@ export default function NutritionPage() {
       </section>
 
       {/* Foods Grid */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
+        <div className="grid lg-cols-2 gap-8">
           {/* Good Foods */}
           <div className="bg-secondary/10 p-8 rounded-2xl border-2 border-secondary shadow-lg">
             <div className="flex items-center gap-3 mb-6">
@@ -146,7 +146,7 @@ export default function NutritionPage() {
             
             <div className="grid gap-3">
               {goodFoods.map((food, index) => (
-                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
+                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover-md transition-shadow flex items-center gap-3">
                   <span className="text-2xl">{food.icon}</span>
                   <div className="flex-1">
                     <p className="font-medium">{food.name}</p>
@@ -169,7 +169,7 @@ export default function NutritionPage() {
             
             <div className="grid gap-3">
               {badFoods.map((food, index) => (
-                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
+                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover-md transition-shadow flex items-center gap-3">
                   <span className="text-2xl">{food.icon}</span>
                   <div className="flex-1">
                     <p className="font-medium">{food.name}</p>
@@ -184,7 +184,7 @@ export default function NutritionPage() {
       </section>
 
       {/* Water Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8 mb-12">
         <div className="bg-accent rounded-2xl p-8 text-white shadow-2xl">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -220,5 +220,6 @@ export default function NutritionPage() {
     </div>
   );
 }
+
 
 

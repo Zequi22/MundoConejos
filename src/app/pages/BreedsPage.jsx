@@ -80,12 +80,12 @@ export default function BreedsPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
+            <h1 className="text-5xl md-6xl mb-6">
               Razas de Conejos
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl md-2xl text-gray-100 max-w-3xl mx-auto">
               Descubre las características únicas de cada raza y encuentra el compañero perfecto para ti
             </p>
           </div>
@@ -93,7 +93,7 @@ export default function BreedsPage() {
       </section>
 
       {/* Image Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <div className="rounded-2xl overflow-hidden shadow-2xl">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1589933767411-38a58367efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWZmZXJlbnQlMjByYWJiaXQlMjBicmVlZHN8ZW58MXx8fHwxNzczNTgwNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -104,7 +104,7 @@ export default function BreedsPage() {
       </section>
 
       {/* Info Section */}
-      <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-8 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <div className="bg-accent/10 rounded-2xl p-8 mb-12">
           <h2 className="text-3xl mb-4 text-center">Más de 300 Razas en el Mundo</h2>
           <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto">
@@ -115,14 +115,14 @@ export default function BreedsPage() {
       </section>
 
       {/* Breeds Grid */}
-      <section className="pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="pb-20 max-w-7xl mx-auto px-4 sm-6 lg-8">
+        <div className="grid md-cols-2 lg-cols-3 gap-8">
           {breeds.map((breed, index) => (
-            <Card key={index} className="hover:shadow-2xl transition-all duration-300 border-0 overflow-hidden group">
+            <Card key={index} className="hover-2xl transition-all duration-300 border-0 overflow-hidden group">
               <div className={`h-2 ${colorClasses[breed.color]}`}></div>
               
               <CardHeader>
-                <CardTitle className="text-2xl group-hover:text-purple-600 transition-colors">
+                <CardTitle className="text-2xl group-hover-purple-600 transition-colors">
                   {breed.name}
                 </CardTitle>
                 <div className="flex flex-wrap gap-2 mt-3">
@@ -173,4 +173,5 @@ export default function BreedsPage() {
     </div>
   );
 }
+
 

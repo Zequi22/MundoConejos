@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 const careCategories = [
   {
     id: 'habitat',
-    icon: Home,
+    icon,
     title: "Hábitat",
     color: "bg-primary",
     sections: [
@@ -43,7 +43,7 @@ const careCategories = [
   },
   {
     id: 'hygiene',
-    icon: Scissors,
+    icon,
     title: "Higiene y Cepillado",
     color: "bg-secondary",
     sections: [
@@ -81,7 +81,7 @@ const careCategories = [
   },
   {
     id: 'exercise',
-    icon: Activity,
+    icon,
     title: "Ejercicio y Juego",
     color: "bg-accent",
     sections: [
@@ -119,7 +119,7 @@ const careCategories = [
   },
   {
     id: 'social',
-    icon: Users,
+    icon,
     title: "Socialización",
     color: "bg-primary",
     sections: [
@@ -162,12 +162,12 @@ export default function CarePage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 bg-accent text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
+            <h1 className="text-5xl md-6xl mb-6">
               Cuidados Esenciales
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl md-2xl text-gray-100 max-w-3xl mx-auto">
               Proporcionar los cuidados adecuados asegura una vida larga y feliz para tu conejo
             </p>
           </div>
@@ -175,7 +175,7 @@ export default function CarePage() {
       </section>
 
       {/* Image Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <div className="rounded-2xl overflow-hidden shadow-2xl">
           <ImageWithFallback
             src="https://images.unsplash.com/photo-1767016627558-3f41c7432e2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWJiaXQlMjBodXRjaCUyMGhhYml0YXR8ZW58MXx8fHwxNzczNTgwNTY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
@@ -186,16 +186,16 @@ export default function CarePage() {
       </section>
 
       {/* Tabs Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <Tabs defaultValue="habitat" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto gap-2 bg-transparent mb-8">
+          <TabsList className="grid w-full grid-cols-2 lg-cols-4 h-auto gap-2 bg-transparent mb-8">
             {careCategories.map((category) => {
               const Icon = category.icon;
               return (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="flex flex-col items-center gap-2 p-4 data-[state=active]:bg-white data-[state=active]:shadow-lg rounded-xl"
+                  className="flex flex-col items-center gap-2 p-4 data-[state=active]-white data-[state=active]-lg rounded-xl"
                 >
                   <div className={`p-3 rounded-lg ${category.color}`}>
                     <Icon className="w-6 h-6 text-white" />
@@ -245,7 +245,7 @@ export default function CarePage() {
       </section>
 
       {/* Quick Tips */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8 mb-12">
         <div className="bg-secondary rounded-2xl p-8 text-white shadow-2xl">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -253,7 +253,7 @@ export default function CarePage() {
             </div>
             <div className="flex-1">
               <h3 className="text-3xl mb-4">Consejos Importantes</h3>
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md-cols-2 gap-4">
                 <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
                   <p className="font-semibold mb-2">🐰 Tiempo de Adaptación</p>
                   <p className="text-sm text-orange-50">Dale tiempo a tu conejo para adaptarse a su nuevo hogar. Puede tardar semanas en sentirse cómodo.</p>
@@ -278,5 +278,6 @@ export default function CarePage() {
     </div>
   );
 }
+
 
 

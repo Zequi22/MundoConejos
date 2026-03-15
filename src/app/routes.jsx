@@ -10,16 +10,17 @@ import FAQPage from "./pages/FAQPage";
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: Layout,
+    Component,
     children: [
-      { index: true, Component: HomePage },
-      { path: "razas", Component: BreedsPage },
-      { path: "alimentacion", Component: NutritionPage },
-      { path: "cuidados", Component: CarePage },
-      { path: "salud", Component: HealthPage },
-      { path: "faq", Component: FAQPage },
+      { index, Component },
+      { path: "razas", Component },
+      { path: "alimentacion", Component },
+      { path: "cuidados", Component },
+      { path: "salud", Component },
+      { path: "faq", Component },
     ],
   },
 ]);
+
 
 

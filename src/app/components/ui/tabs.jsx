@@ -33,7 +33,7 @@ function TabsTrigger({ className, ...props }) {
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        "data-[state=active]:bg-card dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-xl border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        "data-[state=active]-card dark-[state=active]-foreground focus-visible-ring focus-visible-ring/50 focus-visible-ring dark-[state=active]-input dark-[state=active]-input/30 text-foreground dark-muted-foreground inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-xl border border-transparent px-2 py-1 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible-[3px] focus-visible-1 disabled-events-none disabled-50 [&_svg]-events-none [&_svg]-0 [&_svg([class*='size-'])]-4",
         className
       )}
       {...props}
@@ -52,6 +52,7 @@ function TabsContent({ className, ...props }) {
 }
 
 export { Tabs, TabsList, TabsTrigger, TabsContent };
+
 
 
 

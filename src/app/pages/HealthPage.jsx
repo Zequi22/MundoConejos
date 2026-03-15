@@ -92,12 +92,12 @@ export default function HealthPage() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
+            <h1 className="text-5xl md-6xl mb-6">
               Salud y Bienestar
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
+            <p className="text-xl md-2xl text-gray-100 max-w-3xl mx-auto">
               Reconocer los signos de salud y enfermedad es fundamental para el cuidado de tu conejo
             </p>
           </div>
@@ -105,7 +105,7 @@ export default function HealthPage() {
       </section>
 
       {/* Alert Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <Alert className="border-2 border-accent bg-accent/5 shadow-lg">
           <Activity className="h-6 w-6 text-blue-600" />
           <AlertTitle className="text-blue-900 text-xl">Importante sobre los Conejos</AlertTitle>
@@ -118,13 +118,13 @@ export default function HealthPage() {
       </section>
 
       {/* Common Issues */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <h2 className="text-4xl text-center mb-12">Problemas de Salud Comunes</h2>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md-cols-2 lg-cols-3 gap-6">
           {commonIssues.map((issue, index) => (
             <Card key={index} className={`
-              border-2 hover:shadow-2xl transition-all
+              border-2 hover-2xl transition-all
               ${issue.urgency === 'high' 
                 ? 'border-destructive bg-destructive/10' 
                 : 'border-secondary bg-secondary/10'}
@@ -164,10 +164,10 @@ export default function HealthPage() {
       </section>
 
       {/* Health Checklist */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8">
         <h2 className="text-4xl text-center mb-12">Lista de Verificación de Salud</h2>
         
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md-cols-3 gap-6">
           <Card className="border-0 shadow-xl bg-primary/10">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-green-800">
@@ -228,7 +228,7 @@ export default function HealthPage() {
       </section>
 
       {/* Emergency Signs */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <section className="py-12 max-w-7xl mx-auto px-4 sm-6 lg-8 mb-12">
         <div className="bg-destructive rounded-2xl p-8 text-white shadow-2xl">
           <div className="flex items-start gap-4">
             <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
@@ -239,7 +239,7 @@ export default function HealthPage() {
               <p className="text-red-100 mb-6 text-lg">
                 Si observas cualquiera de estos signos, contacta a un veterinario INMEDIATAMENTE:
               </p>
-              <div className="grid md:grid-cols-2 gap-3">
+              <div className="grid md-cols-2 gap-3">
                 {emergencySigns.map((sign, i) => (
                   <div key={i} className="bg-white/10 backdrop-blur-sm p-3 rounded-lg flex items-start gap-2">
                     <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
@@ -261,5 +261,6 @@ export default function HealthPage() {
     </div>
   );
 }
+
 
 
