@@ -1,5 +1,5 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { Check, X, AlertTriangle, Leaf, Droplet } from 'lucide-react';
+import { Check, X, AlertTriangle, Leaf, Droplet, Apple } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 
 const dietComponents = [
