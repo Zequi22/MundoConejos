@@ -1,181 +1,206 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { Check, X, AlertTriangle, Leaf, Droplet, Apple } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
+import { Hero } from '../components/Hero';
+import { Blob, Sparkle, WaveDivider, Daisy } from '../components/Decor';
+import { HERO_IMAGES, IMAGES } from '../constants/images';
+import { Check, Wheat, Leaf, Sprout, Carrot, Salad, CircleX, Droplet, Apple } from 'lucide-react';
 
 const dietComponents = [
   {
-    icon: Leaf,
+    icon: Wheat,
     title: 'Heno',
     percentage: '80%',
+    width: '80%',
+    color: 'bg-lime text-ink',
+    bar: 'bg-lime',
     description: 'Base de la alimentación',
-    details: 'El heno de timothy o hierba debe estar disponible ilimitadamente. Es esencial para la digestión y el desgaste dental natural.',
-    tips: ['Disponible 24/7', 'Debe ser fresco y de calidad', 'Principal fuente de fibra', 'Ayuda al desgaste dental'],
-    color: 'green'
+    details:
+      'El heno de timothy o de hierba debe estar disponible ilimitadamente. Es esencial para la digestión y el desgaste dental natural.',
+    tips: ['Disponible 24/7', 'Fresco y de calidad', 'Principal fuente de fibra', 'Ayuda al desgaste dental']
   },
   {
     icon: Leaf,
-    title: 'Vegetales Frescos',
+    title: 'Vegetales frescos',
     percentage: '10-15%',
+    width: '14%',
+    color: 'bg-teal text-cream',
+    bar: 'bg-teal',
     description: 'Nutrientes esenciales',
-    details: 'Una variedad de verduras frescas diariamente proporciona vitaminas y minerales esenciales.',
-    tips: ['1 taza por kg de peso/día', 'Variedad de verduras de hoja', 'Introducir nuevas gradualmente', 'Lavar bien antes'],
-    color: 'blue'
+    details:
+      'Una variedad de verduras frescas cada día aporta las vitaminas y minerales esenciales para tu conejo.',
+    tips: ['1 taza por kg de peso/día', 'Variedad de hoja verde', 'Introducir nuevas gradualmente', 'Lavar bien antes']
   },
   {
     icon: Apple,
     title: 'Pellets',
     percentage: '5-10%',
+    width: '8%',
+    color: 'bg-coral text-ink',
+    bar: 'bg-coral',
     description: 'Complemento nutricional',
-    details: 'Pellets de alta calidad específicos para conejos, en cantidades limitadas según el peso del animal.',
-    tips: ['1/4 taza por 2.5kg', 'Específicos para conejos', 'Alto contenido de fibra', 'Limitar cantidad'],
-    color: 'purple'
+    details:
+      'Pellets de alta calidad específicos para conejos, en cantidades limitadas según el peso del animal.',
+    tips: ['1/4 taza por 2.5 kg', 'Específicos para conejos', 'Alto contenido de fibra', 'Limitar la cantidad']
   }
 ];
 
 const goodFoods = [
-  { name: "Heno de timothy", category: "Esencial", icon: "🌾" },
-  { name: "Col rizada", category: "Verdura", icon: "🥬" },
-  { name: "Espinaca", category: "Verdura", icon: "🥬" },
-  { name: "Lechuga romana", category: "Verdura", icon: "🥬" },
-  { name: "Perejil", category: "Hierba", icon: "🌿" },
-  { name: "Cilantro", category: "Hierba", icon: "🌿" },
-  { name: "Albahaca", category: "Hierba", icon: "🌿" },
-  { name: "Zanahorias (moderación)", category: "Verdura", icon: "🥕" },
-  { name: "Brócoli (pequeñas cantidades)", category: "Verdura", icon: "🥦" },
-  { name: "Pimientos", category: "Verdura", icon: "🫑" },
-  { name: "Pepino", category: "Verdura", icon: "🥒" },
-  { name: "Calabacín", category: "Verdura", icon: "🥒" }
+  { name: 'Heno de timothy', category: 'Esencial', icon: Wheat },
+  { name: 'Col rizada', category: 'Verdura', icon: Leaf },
+  { name: 'Espinaca', category: 'Verdura', icon: Leaf },
+  { name: 'Lechuga romana', category: 'Verdura', icon: Leaf },
+  { name: 'Perejil', category: 'Hierba', icon: Sprout },
+  { name: 'Cilantro', category: 'Hierba', icon: Sprout },
+  { name: 'Albahaca', category: 'Hierba', icon: Sprout },
+  { name: 'Zanahoria (moderación)', category: 'Verdura', icon: Carrot },
+  { name: 'Brócoli (pequeñas cantidades)', category: 'Verdura', icon: Salad },
+  { name: 'Pimiento', category: 'Verdura', icon: Salad },
+  { name: 'Pepino', category: 'Verdura', icon: Salad },
+  { name: 'Calabacín', category: 'Verdura', icon: Salad }
 ];
 
 const badFoods = [
-  { name: "Chocolate", danger: "Tóxico", icon: "🍫" },
-  { name: "Dulces y azúcares", danger: "Peligroso", icon: "🍬" },
-  { name: "Lechuga iceberg", danger: "Bajo valor nutricional", icon: "🥬" },
-  { name: "Aguacate", danger: "Tóxico", icon: "🥑" },
-  { name: "Cebolla y ajo", danger: "Tóxico", icon: "🧅" },
-  { name: "Patatas", danger: "Peligroso", icon: "🥔" },
-  { name: "Semillas y nueces", danger: "Peligroso", icon: "🌰" },
-  { name: "Pan", danger: "Dañino", icon: "🍞" },
-  { name: "Productos lácteos", danger: "No digerible", icon: "🥛" }
+  { name: 'Chocolate', danger: 'Tóxico' },
+  { name: 'Dulces y azúcares', danger: 'Peligroso' },
+  { name: 'Lechuga iceberg', danger: 'Bajo valor nutricional' },
+  { name: 'Aguacate', danger: 'Tóxico' },
+  { name: 'Cebolla y ajo', danger: 'Tóxico' },
+  { name: 'Patata', danger: 'Peligroso' },
+  { name: 'Semillas y nueces', danger: 'Peligroso' },
+  { name: 'Pan', danger: 'Dañino' },
+  { name: 'Productos lácteos', danger: 'No digerible' }
 ];
-
-const colorGradients = {
-  green: 'bg-secondary',
-  blue: 'bg-accent',
-  purple: 'bg-primary'
-};
 
 export default function NutritionPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-secondary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
-              Alimentación
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-              Una dieta equilibrada es fundamental para la salud y longevidad de tu conejo
-            </p>
+    <div className="min-h-screen">
+      <Hero
+        image={HERO_IMAGES.nutrition}
+        tint="bg-mint"
+        eyebrow="Dieta equilibrada"
+        title="Alimentación"
+        highlight="saludable"
+        highlightColor="text-sage"
+        description="Una dieta equilibrada es fundamental para la salud y la longevidad de tu conejo."
+        badge="¡Heno siempre!"
+        badgeColor="bg-sage text-cream"
+      />
+
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-4xl">
+          <Blob className="absolute -inset-6 h-auto w-auto text-sage/20" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
+            <ImageWithFallback
+              src={IMAGES.eating}
+              alt="Conejo comiendo vegetales"
+              className="h-[340px] w-full object-cover md:h-[440px]"
+            />
           </div>
+          <Daisy className="absolute -left-4 -bottom-4 h-14 w-14 text-rose" />
         </div>
       </section>
 
-      {/* Image Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl overflow-hidden shadow-2xl">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1695827406639-befb948fb513?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWJiaXQlMjBlYXRpbmclMjB2ZWdldGFibGVzfGVufDF8fHx8MTc3MzUxNTc3Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Conejo comiendo vegetales"
-            className="w-full h-[400px] object-cover"
-          />
+      <section className="relative mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
+          <span className="font-script text-2xl text-primary">Proporciones diarias</span>
+          <h2 className="mt-2 text-3xl md:text-4xl">Componentes de una dieta balanceada</h2>
         </div>
-      </section>
 
-      {/* Diet Components */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl text-center mb-12">Componentes de una Dieta Balanceada</h2>
-        
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {dietComponents.map((component, index) => {
+        <div className="grid gap-8 md:grid-cols-3">
+          {dietComponents.map((component) => {
             const Icon = component.icon;
             return (
-              <Card key={index} className="border-0 shadow-xl hover:shadow-2xl transition-all overflow-hidden">
-                <div className={`h-1.5 ${colorGradients[component.color]}`}></div>
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className={`p-3 rounded-xl ${colorGradients[component.color]}`}>
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="text-3xl font-bold text-primary">
-                      {component.percentage}
-                    </div>
+              <article
+                key={component.title}
+                className="card-boho overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+              >
+                <div className={`flex items-center justify-between border-b-2 border-ink px-6 py-5 ${component.color}`}>
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink bg-cream text-ink">
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <span className="font-display text-3xl font-bold">{component.percentage}</span>
+                </div>
+
+                <div className="p-7">
+                  <div className="h-3 w-full overflow-hidden rounded-full border-2 border-ink bg-cream">
+                    <div className={`h-full ${component.bar}`} style={{ width: component.width }} />
                   </div>
-                  <CardTitle className="text-2xl">{component.title}</CardTitle>
-                  <p className="text-sm text-gray-500">{component.description}</p>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-700 mb-4">{component.details}</p>
-                  <ul className="space-y-2">
-                    {component.tips.map((tip, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm">
-                        <Check className="w-4 h-4 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span>{tip}</span>
+
+                  <h3 className="mt-5 text-2xl">{component.title}</h3>
+                  <p className="text-sm font-bold text-primary">{component.description}</p>
+
+                  <p className="mt-4 text-sm leading-relaxed text-foreground/75">{component.details}</p>
+
+                  <ul className="mt-5 space-y-2">
+                    {component.tips.map((tip) => (
+                      <li key={tip} className="flex items-start gap-2 text-sm font-medium">
+                        <span className="grid h-5 w-5 flex-shrink-0 place-items-center rounded-full border-2 border-ink bg-lime text-ink">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        {tip}
                       </li>
                     ))}
                   </ul>
-                </CardContent>
-              </Card>
+                </div>
+              </article>
             );
           })}
         </div>
       </section>
 
-      {/* Foods Grid */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Good Foods */}
-          <div className="bg-secondary/10 p-8 rounded-2xl border-2 border-secondary shadow-lg">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-secondary rounded-xl">
-                <Check className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-3xl text-green-800">Alimentos Permitidos</h3>
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-2">
+          <div className="rounded-[2rem] border-4 border-ink bg-mint p-8 shadow-hard">
+            <div className="mb-6 flex items-center gap-3">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink bg-lime text-ink">
+                <Check className="h-6 w-6" />
+              </span>
+              <h3 className="text-2xl text-sage">Alimentos permitidos</h3>
             </div>
-            
+
             <div className="grid gap-3">
-              {goodFoods.map((food, index) => (
-                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-                  <span className="text-2xl">{food.icon}</span>
-                  <div className="flex-1">
-                    <p className="font-medium">{food.name}</p>
-                    <p className="text-sm text-gray-500">{food.category}</p>
+              {goodFoods.map((food) => {
+                const Icon = food.icon;
+                return (
+                  <div
+                    key={food.name}
+                    className="flex items-center gap-4 rounded-2xl border-2 border-ink/10 bg-card p-3.5 transition-transform hover:-translate-y-0.5"
+                  >
+                    <span className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl border-2 border-ink bg-lime text-ink">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <div className="flex-1">
+                      <p className="font-bold">{food.name}</p>
+                      <p className="text-sm text-sage">{food.category}</p>
+                    </div>
+                    <Check className="h-5 w-5 text-sage" />
                   </div>
-                  <Check className="w-5 h-5 text-green-600" />
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
-          {/* Bad Foods */}
-          <div className="bg-destructive/10 p-8 rounded-2xl border-2 border-destructive shadow-lg">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-destructive rounded-xl">
-                <X className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-3xl text-red-800">Alimentos Prohibidos</h3>
+          <div className="rounded-[2rem] border-4 border-ink bg-blush p-8 shadow-hard">
+            <div className="mb-6 flex items-center gap-3">
+              <span className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink bg-destructive text-cream">
+                <CircleX className="h-6 w-6" />
+              </span>
+              <h3 className="text-2xl text-destructive">Alimentos prohibidos</h3>
             </div>
-            
+
             <div className="grid gap-3">
-              {badFoods.map((food, index) => (
-                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex items-center gap-3">
-                  <span className="text-2xl">{food.icon}</span>
+              {badFoods.map((food) => (
+                <div
+                  key={food.name}
+                  className="flex items-center gap-4 rounded-2xl border-2 border-ink/10 bg-card p-3.5 transition-transform hover:-translate-y-0.5"
+                >
+                  <span className="grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl border-2 border-ink bg-destructive text-cream">
+                    <CircleX className="h-5 w-5" />
+                  </span>
                   <div className="flex-1">
-                    <p className="font-medium">{food.name}</p>
-                    <p className="text-sm text-red-600">{food.danger}</p>
+                    <p className="font-bold">{food.name}</p>
+                    <p className="text-sm font-bold text-destructive">{food.danger}</p>
                   </div>
-                  <X className="w-5 h-5 text-red-600" />
+                  <CircleX className="h-5 w-5 text-destructive" />
                 </div>
               ))}
             </div>
@@ -183,43 +208,38 @@ export default function NutritionPage() {
         </div>
       </section>
 
-      {/* Water Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-accent rounded-2xl p-8 text-white shadow-2xl">
-          <div className="flex items-start gap-4">
-            <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
-              <Droplet className="w-8 h-8" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-3xl mb-4">Agua Fresca y Limpia</h3>
-              <p className="text-lg text-blue-50 mb-4">
-                Los conejos deben tener acceso constante a agua fresca y limpia. Es vital para su salud y bienestar.
-              </p>
-              <ul className="space-y-2 text-blue-50">
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Cambia el agua diariamente</span>
+      <section className="relative overflow-hidden bg-sky px-4 pt-16 pb-20 sm:px-6 lg:px-8">
+        <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
+        <Blob className="absolute -right-16 -top-10 h-64 w-64 text-cloud/50" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[auto_1fr]">
+          <span className="grid h-20 w-20 place-items-center rounded-3xl border-2 border-ink bg-cream text-sky shadow-hard">
+            <Droplet className="h-10 w-10" />
+          </span>
+          <div>
+            <h2 className="text-3xl text-ink md:text-4xl">Agua fresca y limpia</h2>
+            <p className="mt-3 max-w-2xl font-medium text-ink/75">
+              Los conejos deben tener acceso constante a agua fresca y limpia. Es vital para su salud
+              y bienestar.
+            </p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {[
+                'Cambia el agua a diario',
+                'Limpia el recipiente con frecuencia',
+                'Usa botella o cuenco pesado',
+                'Vigila el consumo diario'
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2 rounded-xl border-2 border-ink bg-cream p-3 text-sm font-bold text-ink"
+                >
+                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-sky" />
+                  {item}
                 </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Limpia el recipiente regularmente</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Usa botella o bowl pesado (que no se vuelque)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <span>Monitorea el consumo diario</span>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-
-

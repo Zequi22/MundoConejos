@@ -1,154 +1,173 @@
 import { Link } from 'react-router';
+import { ArrowRight, Heart, Shield, BookOpen, Stethoscope, Apple, Rabbit, Sparkles } from 'lucide-react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { ArrowRight, Heart, Shield, Sparkles, BookOpen, Stethoscope, Apple } from 'lucide-react';
-import { Card, CardContent } from '../components/ui/card';
+import { Hero } from '../components/Hero';
+import { Blob, Sparkle, Daisy, WaveDivider, Rainbow } from '../components/Decor';
+import { HERO_IMAGES, IMAGES } from '../constants/images';
 
 const features = [
   {
     icon: BookOpen,
     title: 'Razas',
-    description: 'Descubre las diferentes razas de conejos y sus características únicas',
+    description: 'Descubre las diferentes razas de conejos y sus características únicas.',
     link: '/razas',
-    gradient: 'bg-primary'
+    image: IMAGES.breeds,
+    chip: 'bg-teal'
   },
   {
     icon: Apple,
     title: 'Alimentación',
-    description: 'Guía completa sobre qué comer y qué evitar para mantener a tu conejo saludable',
+    description: 'Qué comer y qué evitar para mantener a tu conejo sano y vital.',
     link: '/alimentacion',
-    gradient: 'bg-secondary'
+    image: IMAGES.eating,
+    chip: 'bg-sage'
   },
   {
     icon: Heart,
     title: 'Cuidados',
-    description: 'Todo sobre el habitat, higiene, socialización y ejercicio de tu conejo',
+    description: 'Hábitat, higiene, socialización y ejercicio en el día a día.',
     link: '/cuidados',
-    gradient: 'bg-accent'
+    image: IMAGES.habitat,
+    chip: 'bg-berry'
   },
   {
     icon: Stethoscope,
     title: 'Salud',
-    description: 'Aprende a identificar signos de salud y problemas comunes',
+    description: 'Aprende a identificar signos de salud y problemas comunes.',
     link: '/salud',
-    gradient: 'bg-primary'
+    image: IMAGES.rabbit,
+    chip: 'bg-primary'
   }
 ];
 
 const stats = [
-  { value: '8-12', label: 'Años de vida' },
-  { value: '300+', label: 'Razas diferentes' },
-  { value: '24/7', label: 'Heno disponible' },
-  { value: '3-4h', label: 'Ejercicio diario' }
+  { value: '8-12', label: 'Años de vida', color: 'bg-terracotta text-cream', rotate: '-rotate-2' },
+  { value: '300+', label: 'Razas en el mundo', color: 'bg-teal text-cream', rotate: 'rotate-1' },
+  { value: '24/7', label: 'Heno disponible', color: 'bg-mustard text-accent-foreground', rotate: '-rotate-1' },
+  { value: '3-4h', label: 'Ejercicio diario', color: 'bg-sage text-cream', rotate: 'rotate-2' }
+];
+
+const pillars = [
+  'Información basada en las necesidades reales de los conejos domésticos.',
+  'Consejos prácticos para principiantes y cuidadores con experiencia.',
+  'Enfoque preventivo: cuida hoy para evitar problemas mañana.'
+];
+
+const tickerWords = [
+  'Heno fresco',
+  'Zanahorias',
+  'Mucho cariño',
+  'Cepillado',
+  'Ejercicio diario',
+  'Salud preventiva',
+  'Adopta, no compres',
+  'Conejos felices'
 ];
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-primary/90">
-          <div className="absolute inset-0 opacity-20">
-            <ImageWithFallback
-              src="https://images.unsplash.com/photo-1747184046952-8890127c598a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwcmFiYml0JTIwYnVubnl8ZW58MXx8fHwxNzczNDk2MjQ0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Conejo"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm">Guía Completa de Cuidado</span>
-            </div>
-            
-            <h1 className="text-5xl md:text-7xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              Todo Sobre
-              <span className="block text-accent">
-                Conejos
-              </span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
-              La guía definitiva para cuidar, alimentar y mantener feliz a tu conejo mascota
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/razas"
-                className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
-              >
-                Explorar Razas
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                to="/cuidados"
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full hover:bg-white/20 transition-all border-2 border-white/30"
-              >
-                Guía de Cuidados
-              </Link>
-            </div>
-          </div>
-        </div>
+      <Hero
+        image={HERO_IMAGES.home}
+        tint="bg-butter"
+        eyebrow="Guía completa de cuidado"
+        title="Todo sobre"
+        highlight="los conejos"
+        highlightColor="text-primary"
+        description="La guía definitiva para cuidar, alimentar y mantener feliz a tu conejo, desde el primer día hasta cada etapa de su vida."
+        badge="8-12 años"
+        badgeColor="bg-mustard text-accent-foreground"
+      >
+        <Link
+          to="/razas"
+          className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink bg-primary px-8 py-4 font-bold text-primary-foreground shadow-hard transition-all hover:-translate-y-0.5 hover:shadow-hard-lg"
+        >
+          Explorar razas
+          <ArrowRight className="h-5 w-5" />
+        </Link>
+        <Link
+          to="/cuidados"
+          className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink bg-card px-8 py-4 font-bold text-ink shadow-hard transition-all hover:-translate-y-0.5 hover:shadow-hard-lg"
+        >
+          Guía de cuidados
+        </Link>
+      </Hero>
 
-        {/* Decorative elements */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
-      </section>
+      <div className="overflow-hidden border-y-2 border-ink bg-primary py-3 text-primary-foreground">
+        <div className="flex w-max animate-marquee">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex items-center">
+              {tickerWords.map((word) => (
+                <span key={`${copy}-${word}`} className="flex items-center">
+                  <span className="px-6 font-display text-lg font-semibold whitespace-nowrap">
+                    {word}
+                  </span>
+                  <Daisy className="h-5 w-5 text-mustard" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm-6 lg-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                 <div className="text-4xl md:text-5xl text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className={`rounded-3xl border-2 border-ink p-6 text-center shadow-hard ${stat.color} ${stat.rotate} transition-transform hover:rotate-0`}
+            >
+              <div className="font-display text-3xl font-bold md:text-4xl">{stat.value}</div>
+              <div className="mt-1 text-xs font-bold opacity-90 md:text-sm">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl mb-4">
-              Explora Nuestra Guía
+      <section className="relative overflow-hidden py-16 md:py-24">
+        <Blob className="absolute -right-24 top-10 h-72 w-72 text-mint" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-14 max-w-2xl text-center">
+            <Rainbow className="mx-auto mb-3 h-12 w-16" />
+            <span className="font-script text-2xl text-teal">Explora la guía</span>
+            <h2 className="mt-2 text-3xl md:text-4xl">
+              Todo lo que necesitas para ser el mejor cuidador
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Todo lo que necesitas saber para ser el mejor cuidador de conejos
+            <p className="mt-4 text-foreground/70">
+              Cuatro áreas esenciales para comprender y cuidar a tu conejo con confianza.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.map((feature, index) => {
+          <div className="grid gap-8 md:grid-cols-2">
+            {features.map((feature) => {
               const Icon = feature.icon;
               return (
-                <Link key={index} to={feature.link} className="group">
-                  <Card className="h-full hover:shadow-2xl transition-all duration-300 border-2 hover:border-purple-200 overflow-hidden">
-                    <CardContent className="p-8">
-                      <div className={`inline-flex p-4 rounded-2xl ${feature.gradient} mb-6 group-hover:scale-110 transition-transform`}>
-                        <Icon className="w-8 h-8 text-white" />
-                      </div>
-                      
-                      <h3 className="text-2xl mb-3 group-hover:text-purple-600 transition-colors">
-                        {feature.title}
-                      </h3>
-                      
-                      <p className="text-gray-600 mb-4">
-                        {feature.description}
-                      </p>
-                      
-                      <div className="flex items-center gap-2 text-purple-600 group-hover:translate-x-4 transition-all">
-                        <span>Explorar</span>
-                        <ArrowRight className="w-4 h-4" />
-                      </div>
-                    </CardContent>
-                  </Card>
+                <Link
+                  key={feature.title}
+                  to={feature.link}
+                  className="card-boho group flex flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+                >
+                  <div className="relative h-52 overflow-hidden border-b-2 border-ink">
+                    <ImageWithFallback
+                      src={feature.image}
+                      alt={feature.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <span
+                      className={`absolute -bottom-6 right-6 grid h-14 w-14 place-items-center rounded-2xl border-2 border-ink text-cream shadow-hard transition-transform duration-300 group-hover:-rotate-6 ${feature.chip}`}
+                    >
+                      <Icon className="h-7 w-7" />
+                    </span>
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-8">
+                    <h3 className="text-2xl">{feature.title}</h3>
+                    <p className="mt-3 flex-1 text-foreground/70">{feature.description}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 font-bold text-primary">
+                      Explorar
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1.5" />
+                    </span>
+                  </div>
                 </Link>
               );
             })}
@@ -156,28 +175,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <Shield className="w-16 h-16 mx-auto mb-6 opacity-90" />
-          <h2 className="text-3xl md:text-4xl mb-4">
-            ¿Tienes Preguntas?
-          </h2>
-          <p className="text-xl mb-8 text-gray-100">
-            Consulta nuestra sección de preguntas frecuentes para resolver tus dudas
+      <section className="relative overflow-hidden bg-cloud pt-16 pb-24 md:pt-24 md:pb-32">
+        <WaveDivider className="absolute left-0 top-0 h-12 w-full rotate-180 text-cream" />
+        <Daisy className="absolute left-[6%] top-24 hidden h-16 w-16 text-sky lg:block" />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+          <div className="relative">
+            <Blob className="absolute -inset-6 h-auto w-auto text-mustard/60" />
+            <div className="relative overflow-hidden rounded-t-full border-4 border-ink shadow-hard-lg">
+              <ImageWithFallback
+                src={IMAGES.habitat}
+                alt="Conejo en su hábitat"
+                className="h-[440px] w-full object-cover"
+              />
+            </div>
+            <span className="absolute -left-4 bottom-10 rotate-[-6deg] rounded-2xl border-2 border-ink bg-terracotta px-5 py-3 font-script text-2xl text-cream shadow-hard">
+              ¡Con cariño!
+            </span>
+          </div>
+
+          <div>
+            <span className="font-script text-2xl text-primary">Nuestra filosofía</span>
+            <h2 className="mt-2 text-3xl md:text-4xl">
+              Cada conejo merece una vida larga y feliz
+            </h2>
+            <p className="mt-5 text-foreground/70">
+              Un conejo bien cuidado puede acompañarte más de una década. Esta guía reúne lo esencial
+              para que tomes decisiones informadas en cada momento.
+            </p>
+            <ul className="mt-8 space-y-4">
+              {pillars.map((item, index) => (
+                <li key={item} className="flex items-start gap-4">
+                  <span
+                    className={`mt-0.5 grid h-8 w-8 flex-shrink-0 place-items-center rounded-xl border-2 border-ink text-cream ${
+                      ['bg-terracotta', 'bg-teal', 'bg-sage'][index % 3]
+                    }`}
+                  >
+                    <Sparkles className="h-4 w-4" />
+                  </span>
+                  <span className="font-medium text-foreground/80">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <WaveDivider className="absolute bottom-0 left-0 h-12 w-full text-cream" />
+      </section>
+
+      <section className="relative mt-12 overflow-hidden bg-teal px-4 pt-28 pb-20 text-cream sm:px-6 md:mt-16 lg:px-8">
+        <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
+        <Blob className="absolute -right-20 -top-10 h-72 w-72 text-cream/15" />
+        <Sparkle className="absolute left-[12%] top-14 h-10 w-10 text-mustard" />
+        <div className="relative mx-auto max-w-3xl text-center">
+          <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border-2 border-cream/30 bg-terracotta text-cream shadow-[5px_5px_0_0_#fff8ee]">
+            <Shield className="h-8 w-8" />
+          </span>
+          <h2 className="mt-6 text-3xl md:text-4xl">¿Tienes preguntas?</h2>
+          <p className="mt-4 text-cream/75">
+            Consulta nuestra sección de preguntas frecuentes y resuelve tus dudas antes de dar el
+            siguiente paso.
           </p>
           <Link
             to="/faq"
-            className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-full hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+            className="mt-8 inline-flex items-center gap-2 rounded-full border-2 border-ink bg-mustard px-8 py-4 font-bold text-accent-foreground shadow-[5px_5px_0_0_#e76f51] transition-all hover:-translate-y-0.5"
           >
-            Ver Preguntas Frecuentes
-            <ArrowRight className="w-5 h-5" />
+            Ver preguntas frecuentes
+            <ArrowRight className="h-5 w-5" />
           </Link>
         </div>
       </section>
     </div>
   );
 }
-
-
-

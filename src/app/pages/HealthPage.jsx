@@ -1,258 +1,259 @@
-import { AlertCircle, Activity, Shield, CheckCircle2, XCircle } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Alert, AlertDescription, AlertTitle } from '../components/ui/alert';
-import { Badge } from '../components/ui/badge';
+import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { Hero } from '../components/Hero';
+import { Blob, Sparkle, WaveDivider } from '../components/Decor';
+import { HERO_IMAGES, IMAGES } from '../constants/images';
+import {
+  AlertCircle,
+  AlertTriangle,
+  Activity,
+  Shield,
+  CheckCircle2,
+  Clock,
+  Stethoscope
+} from 'lucide-react';
 
 const commonIssues = [
   {
-    title: "Problemas Dentales",
-    symptoms: ["Pérdida de apetito", "Babeo excesivo", "Dificultad para masticar", "Pérdida de peso"],
-    prevention: "Proporcionar heno ilimitado y juguetes para masticar ayuda al desgaste natural de los dientes.",
-    treatment: "Visita veterinaria para limado dental",
-    urgency: "high"
+    title: 'Problemas dentales',
+    symptoms: ['Pérdida de apetito', 'Babeo excesivo', 'Dificultad para masticar', 'Pérdida de peso'],
+    prevention: 'Proporcionar heno ilimitado y juguetes para masticar ayuda al desgaste natural de los dientes.',
+    treatment: 'Visita veterinaria para limado dental',
+    urgency: 'high'
   },
   {
-    title: "Estasis Gastrointestinal",
-    symptoms: ["Falta de apetito", "Ausencia de heces", "Letargo", "Abdomen hinchado o doloroso"],
-    prevention: "Dieta alta en fibra (heno), ejercicio regular y agua fresca constante.",
-    treatment: "EMERGENCIA - Atención veterinaria inmediata",
-    urgency: "high"
+    title: 'Estasis gastrointestinal',
+    symptoms: ['Falta de apetito', 'Ausencia de heces', 'Letargo', 'Abdomen hinchado o doloroso'],
+    prevention: 'Dieta alta en fibra (heno), ejercicio regular y agua fresca constante.',
+    treatment: 'EMERGENCIA · Atención veterinaria inmediata',
+    urgency: 'high'
   },
   {
-    title: "Ácaros de la Oreja",
-    symptoms: ["Sacudir la cabeza", "Rascarse las orejas", "Costras en las orejas", "Cera marrón oscura"],
-    prevention: "Mantener limpia la zona de vida y revisiones veterinarias regulares.",
-    treatment: "Medicación prescrita por veterinario",
-    urgency: "medium"
+    title: 'Ácaros de la oreja',
+    symptoms: ['Sacudir la cabeza', 'Rascarse las orejas', 'Costras en las orejas', 'Cera marrón oscura'],
+    prevention: 'Mantener limpia la zona de vida y revisiones veterinarias regulares.',
+    treatment: 'Medicación prescrita por veterinario',
+    urgency: 'medium'
   },
   {
-    title: "Obesidad",
-    symptoms: ["Incapacidad de acicalarse", "Letargo", "Dificultad para moverse", "Pliegues de grasa"],
-    prevention: "Dieta controlada, evitar exceso de pellets y golosinas, ejercicio diario.",
-    treatment: "Ajuste de dieta y aumento de ejercicio",
-    urgency: "medium"
+    title: 'Obesidad',
+    symptoms: ['Incapacidad de acicalarse', 'Letargo', 'Dificultad para moverse', 'Pliegues de grasa'],
+    prevention: 'Dieta controlada, evitar exceso de pellets y golosinas, ejercicio diario.',
+    treatment: 'Ajuste de dieta y aumento de ejercicio',
+    urgency: 'medium'
   },
   {
-    title: "Bolas de Pelo",
-    symptoms: ["Disminución del apetito", "Heces más pequeñas", "Letargo"],
-    prevention: "Cepillado regular, dieta alta en fibra, mucho heno y agua.",
-    treatment: "Aumento de fibra y hidratación, consulta veterinaria",
-    urgency: "medium"
+    title: 'Bolas de pelo',
+    symptoms: ['Disminución del apetito', 'Heces más pequeñas', 'Letargo'],
+    prevention: 'Cepillado regular, dieta alta en fibra, mucho heno y agua.',
+    treatment: 'Aumento de fibra e hidratación, consulta veterinaria',
+    urgency: 'medium'
   },
   {
-    title: "Infecciones Respiratorias",
-    symptoms: ["Estornudos", "Secreción nasal", "Respiración dificultosa", "Ojos llorosos"],
-    prevention: "Evitar corrientes de aire, mantener limpio el ambiente, buena ventilación.",
-    treatment: "Antibióticos prescritos por veterinario",
-    urgency: "high"
+    title: 'Infecciones respiratorias',
+    symptoms: ['Estornudos', 'Secreción nasal', 'Respiración dificultosa', 'Ojos llorosos'],
+    prevention: 'Evitar corrientes de aire, mantener limpio el ambiente y buena ventilación.',
+    treatment: 'Antibióticos prescritos por veterinario',
+    urgency: 'high'
   }
 ];
 
 const healthChecklist = {
-  daily: [
-    "Comportamiento y nivel de actividad normal",
-    "Consumo de comida y agua adecuado",
-    "Producción de heces regular (50-300 por día)",
-    "Estado del pelaje limpio y brillante",
-    "Ojos claros sin secreciones",
-    "Respiración normal sin ruidos"
-  ],
-  weekly: [
-    "Peso corporal estable",
-    "Estado de las uñas",
-    "Revisión de dientes frontales",
-    "Condición de las patas y almohadillas",
-    "Revisa orejas (limpias, sin olor)",
-    "Área genital limpia"
-  ],
-  monthly: [
-    "Peso detallado y registro",
-    "Revisión completa del pelaje",
-    "Verificar que no haya bultos o anomalías",
-    "Estado general de salud",
-    "Comportamiento y cambios de hábitos"
-  ]
+  daily: ['Comportamiento y actividad normal', 'Consumo de comida y agua adecuado', 'Producción de heces regular (50-300/día)', 'Pelaje limpio y brillante', 'Ojos claros sin secreciones', 'Respiración normal sin ruidos'],
+  weekly: ['Peso corporal estable', 'Estado de las uñas', 'Revisión de dientes frontales', 'Condición de patas y almohadillas', 'Orejas limpias, sin olor', 'Área genital limpia'],
+  monthly: ['Peso detallado y registro', 'Revisión completa del pelaje', 'Verificar bultos o anomalías', 'Estado general de salud', 'Cambios de hábitos']
 };
 
 const emergencySigns = [
-  "Sin comer por más de 12 horas",
-  "Sin defecar por más de 12 horas",
-  "Diarrea severa o sangre en heces",
-  "Dificultad para respirar",
-  "Convulsiones o espasmos",
-  "Cabeza inclinada o pérdida de equilibrio",
-  "Sangrado",
-  "Letargo extremo o no responde",
-  "Temperatura corporal anormal",
-  "Rechinar de dientes fuerte (indica dolor)"
+  'Sin comer por más de 12 horas',
+  'Sin defecar por más de 12 horas',
+  'Diarrea severa o sangre en heces',
+  'Dificultad para respirar',
+  'Convulsiones o espasmos',
+  'Cabeza inclinada o pérdida de equilibrio',
+  'Sangrado',
+  'Letargo extremo o no responde',
+  'Temperatura corporal anormal',
+  'Rechinar de dientes fuerte (indica dolor)'
+];
+
+const checklistCards = [
+  { key: 'daily', title: 'Revisión diaria', icon: CheckCircle2, color: 'bg-primary text-primary-foreground' },
+  { key: 'weekly', title: 'Revisión semanal', icon: Activity, color: 'bg-teal text-cream' },
+  { key: 'monthly', title: 'Revisión mensual', icon: Shield, color: 'bg-sage text-cream' }
 ];
 
 export default function HealthPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
-              Salud y Bienestar
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-              Reconocer los signos de salud y enfermedad es fundamental para el cuidado de tu conejo
+    <div className="min-h-screen">
+      <Hero
+        image={HERO_IMAGES.health}
+        tint="bg-cloud"
+        eyebrow="Prevención y detección"
+        title="Salud y"
+        highlight="bienestar"
+        highlightColor="text-teal"
+        description="Reconocer los signos de salud y enfermedad es fundamental para el cuidado de tu conejo."
+        badge="¡Obsérvalo!"
+        badgeColor="bg-teal text-cream"
+      />
+
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-4xl">
+          <Blob className="absolute -inset-6 h-auto w-auto text-teal/15" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
+            <ImageWithFallback
+              src={IMAGES.rabbit}
+              alt="Conejo saludable"
+              className="h-[320px] w-full object-cover md:h-[420px]"
+            />
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-4 rounded-[2rem] border-4 border-ink bg-butter p-6 shadow-hard md:flex-row md:items-start md:p-8">
+          <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl border-2 border-ink bg-mustard text-ink">
+            <Activity className="h-6 w-6" />
+          </span>
+          <div>
+            <h2 className="text-xl text-ink">Importante sobre los conejos</h2>
+            <p className="mt-2 font-medium text-ink/75">
+              Los conejos son presas por naturaleza y tienden a ocultar signos de enfermedad hasta
+              que es grave. Observa a diario su comportamiento, apetito y heces. Cualquier cambio
+              significativo requiere atención veterinaria inmediata.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Alert Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Alert className="border-2 border-accent bg-accent/5 shadow-lg">
-          <Activity className="h-6 w-6 text-blue-600" />
-          <AlertTitle className="text-blue-900 text-xl">Importante sobre los Conejos</AlertTitle>
-          <AlertDescription className="text-blue-800 text-base">
-            Los conejos son presas por naturaleza y tienden a ocultar signos de enfermedad hasta que es grave. 
-            Observa diariamente su comportamiento, apetito y heces. Cualquier cambio significativo requiere 
-            atención veterinaria inmediata.
-          </AlertDescription>
-        </Alert>
+      <section className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-12 max-w-2xl text-center">
+          <span className="font-script text-2xl text-primary">Señales de alerta</span>
+          <h2 className="mt-2 text-3xl md:text-4xl">Problemas de salud comunes</h2>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {commonIssues.map((issue) => {
+            const high = issue.urgency === 'high';
+            return (
+              <article
+                key={issue.title}
+                className="card-boho flex flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+              >
+                <div className={`h-2 ${high ? 'bg-destructive' : 'bg-coral'}`} />
+                <div className="flex flex-1 flex-col p-7">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-xl leading-tight">{issue.title}</h3>
+                    {high && (
+                      <span className="flex-shrink-0 rounded-full border-2 border-ink bg-destructive px-3 py-1 text-xs font-bold text-cream">
+                        Urgente
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="mt-5 text-xs font-bold uppercase tracking-wide text-muted-foreground">
+                    Síntomas
+                  </p>
+                  <ul className="mt-2 space-y-1.5">
+                    {issue.symptoms.map((symptom) => (
+                      <li key={symptom} className="flex items-start gap-2 text-sm font-medium text-foreground/80">
+                        <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-destructive" />
+                        {symptom}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-5 space-y-4 border-t-2 border-dashed border-ink/15 pt-5">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wide text-accent-foreground/70">Prevención</p>
+                      <p className="mt-1 text-sm text-foreground/80">{issue.prevention}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wide text-accent-foreground/70">Tratamiento</p>
+                      <p className={`mt-1 text-sm font-bold ${high ? 'text-destructive' : 'text-ink'}`}>
+                        {issue.treatment}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </section>
 
-      {/* Common Issues */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl text-center mb-12">Problemas de Salud Comunes</h2>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {commonIssues.map((issue, index) => (
-              <Card key={index} className={`
-                border-2 hover:shadow-2xl transition-all
-                ${issue.urgency === 'high' 
-                  ? 'border-destructive bg-destructive/10' 
-                  : 'border-secondary bg-secondary/10'}
-              `}>
-              <CardHeader>
-                <div className="flex items-start justify-between mb-2">
-                  <CardTitle className="text-xl flex-1">{issue.title}</CardTitle>
-                  {issue.urgency === 'high' && (
-                    <Badge variant="destructive" className="ml-2">Urgente</Badge>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <p className="font-semibold mb-2 text-sm text-gray-700">Síntomas:</p>
-                  <ul className="space-y-1">
-                    {issue.symptoms.map((symptom, i) => (
-                      <li key={i} className="text-sm flex items-start gap-2">
-                        <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
-                        <span>{symptom}</span>
+      <section className="relative overflow-hidden bg-mint py-16">
+        <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
+        <WaveDivider className="absolute bottom-0 left-0 h-10 w-full text-cream" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <span className="font-script text-2xl text-sage">Rutina preventiva</span>
+            <h2 className="mt-2 text-3xl md:text-4xl">Lista de verificación de salud</h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {checklistCards.map((card) => {
+              const Icon = card.icon;
+              return (
+                <div key={card.key} className="card-boho p-7 shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className={`grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink ${card.color}`}>
+                      <Icon className="h-6 w-6" />
+                    </span>
+                    <h3 className="text-lg font-bold">{card.title}</h3>
+                  </div>
+                  <ul className="space-y-3">
+                    {healthChecklist[card.key].map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-sm font-medium text-foreground/80">
+                        <span className="mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-full border-2 border-ink bg-lime text-ink">
+                          <CheckCircle2 className="h-3 w-3" />
+                        </span>
+                        {item}
                       </li>
                     ))}
                   </ul>
                 </div>
-                <div>
-                  <p className="font-semibold mb-1 text-sm text-gray-700">Prevención:</p>
-                  <p className="text-sm text-gray-600">{issue.prevention}</p>
-                </div>
-                <div>
-                  <p className="font-semibold mb-1 text-sm text-gray-700">Tratamiento:</p>
-                  <p className="text-sm font-medium text-gray-800">{issue.treatment}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      {/* Health Checklist */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl text-center mb-12">Lista de Verificación de Salud</h2>
-        
-        <div className="grid md:grid-cols-3 gap-6">
-          <Card className="border-0 shadow-xl bg-primary/10">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-green-800">
-                <CheckCircle2 className="w-6 h-6" />
-                Revisión Diaria
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {healthChecklist.daily.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-green-600 flex-shrink-0 mt-1.5"></div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 shadow-xl bg-secondary/10">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-blue-800">
-                <Activity className="w-6 h-6" />
-                Revisión Semanal
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {healthChecklist.weekly.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-blue-600 flex-shrink-0 mt-1.5"></div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="border-0 shadow-xl bg-accent/10">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-purple-800">
-                <Shield className="w-6 h-6" />
-                Revisión Mensual
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                {healthChecklist.monthly.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm">
-                    <div className="w-2 h-2 rounded-full bg-purple-600 flex-shrink-0 mt-1.5"></div>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Emergency Signs */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-destructive rounded-2xl p-8 text-white shadow-2xl">
-          <div className="flex items-start gap-4">
-            <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
-              <AlertCircle className="w-10 h-10" />
-            </div>
+      <section className="relative mt-20 overflow-hidden bg-destructive px-4 py-20 text-cream sm:px-6 md:mt-28 lg:px-8">
+        <Blob className="absolute -right-20 -top-12 h-72 w-72 text-ink/15" />
+        <Sparkle className="absolute left-[10%] bottom-12 h-10 w-10 text-mustard" />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start">
+            <span className="grid h-16 w-16 flex-shrink-0 place-items-center rounded-2xl border-2 border-cream/40 bg-cream text-destructive shadow-[5px_5px_0_0_#3b2a1f]">
+              <AlertTriangle className="h-8 w-8" />
+            </span>
             <div className="flex-1">
-              <h3 className="text-3xl mb-2">🚨 Señales de EMERGENCIA</h3>
-              <p className="text-red-100 mb-6 text-lg">
-                Si observas cualquiera de estos signos, contacta a un veterinario INMEDIATAMENTE:
+              <h2 className="text-3xl">Señales de emergencia</h2>
+              <p className="mt-3 max-w-2xl text-cream/85">
+                Si observas cualquiera de estos signos, contacta a un veterinario especializado
+                inmediatamente:
               </p>
-              <div className="grid md:grid-cols-2 gap-3">
-                {emergencySigns.map((sign, i) => (
-                  <div key={i} className="bg-white/10 backdrop-blur-sm p-3 rounded-lg flex items-start gap-2">
-                    <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{sign}</span>
+
+              <div className="mt-6 grid gap-3 md:grid-cols-2">
+                {emergencySigns.map((sign) => (
+                  <div
+                    key={sign}
+                    className="flex items-start gap-2 rounded-xl border-2 border-cream/25 bg-ink/20 p-3 text-sm font-medium"
+                  >
+                    <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0" />
+                    {sign}
                   </div>
                 ))}
               </div>
-              <div className="mt-6 bg-white/20 backdrop-blur-sm p-4 rounded-xl">
-                <p className="font-semibold text-lg">⏰ Tiempo es Vida</p>
-                <p className="text-red-50 mt-2">
-                  No esperes "a ver si mejora". Los conejos pueden deteriorarse muy rápidamente. 
-                  Ten siempre a mano el número de un veterinario de emergencias especializado en exóticos.
-                </p>
+
+              <div className="mt-6 flex items-start gap-4 rounded-2xl border-2 border-cream/25 bg-ink/20 p-5">
+                <Clock className="mt-0.5 h-6 w-6 flex-shrink-0" />
+                <div>
+                  <p className="font-bold">El tiempo es clave</p>
+                  <p className="mt-1 text-sm text-cream/85">
+                    No esperes a ver si mejora. Los conejos pueden deteriorarse muy rápido. Ten
+                    siempre a mano el número de un veterinario de urgencias especializado en
+                    exóticos.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -261,6 +262,3 @@ export default function HealthPage() {
     </div>
   );
 }
-
-
-

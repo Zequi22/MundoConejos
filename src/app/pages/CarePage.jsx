@@ -1,42 +1,54 @@
+import { useState } from 'react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { Home, Scissors, Heart, Thermometer, Users, Activity, Sparkles } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Hero } from '../components/Hero';
+import { Blob, Daisy, Sparkle, WaveDivider } from '../components/Decor';
+import { HERO_IMAGES, IMAGES } from '../constants/images';
+import {
+  Home,
+  Scissors,
+  Thermometer,
+  Users,
+  Activity,
+  Sparkles,
+  Rabbit,
+  Stethoscope,
+  Check
+} from 'lucide-react';
 
 const careCategories = [
   {
     id: 'habitat',
     icon: Home,
-    title: "Hábitat",
-    color: "bg-primary",
+    title: 'Hábitat',
+    color: 'bg-primary text-primary-foreground',
     sections: [
       {
-        subtitle: "Tamaño del Espacio",
+        subtitle: 'Tamaño del espacio',
         items: [
-          "Mínimo 120cm x 60cm x 60cm para un conejo mediano",
-          "La regla: 4 veces el tamaño del conejo cuando está completamente estirado",
-          "Espacio adicional para ejercicio fuera de la jaula",
-          "Considera un recinto más grande o tiempo libre en habitación"
+          'Mínimo 120 × 60 × 60 cm para un conejo mediano',
+          'La regla: 4 veces el tamaño del conejo estirado',
+          'Espacio adicional para ejercicio fuera de la jaula',
+          'Considera un recinto más amplio o tiempo libre en habitación'
         ]
       },
       {
-        subtitle: "Ubicación",
+        subtitle: 'Ubicación',
         items: [
-          "Área fresca y bien ventilada",
-          "Sin corrientes de aire directas",
-          "Protegido de temperaturas extremas (ideal 15-21°C)",
-          "Lejos de ruidos fuertes y estrés",
-          "Zona tranquila de la casa"
+          'Área fresca y bien ventilada',
+          'Sin corrientes de aire directas',
+          'Protegido de temperaturas extremas (ideal 15-21 °C)',
+          'Lejos de ruidos fuertes y fuentes de estrés',
+          'Una zona tranquila de la casa'
         ]
       },
       {
-        subtitle: "Equipamiento Esencial",
+        subtitle: 'Equipamiento esencial',
         items: [
-          "Caja de arena (los conejos pueden entrenarse)",
-          "Comedero pesado que no se vuelque",
-          "Bebedero o botella de agua",
-          "Escondite o refugio para sentirse seguros",
-          "Juguetes seguros para masticar"
+          'Caja de arena (los conejos pueden entrenarse)',
+          'Comedero pesado que no se vuelque',
+          'Bebedero o botella de agua',
+          'Escondite o refugio para sentirse seguros',
+          'Juguetes seguros para masticar'
         ]
       }
     ]
@@ -44,37 +56,37 @@ const careCategories = [
   {
     id: 'hygiene',
     icon: Scissors,
-    title: "Higiene y Cepillado",
-    color: "bg-secondary",
+    title: 'Higiene y cepillado',
+    color: 'bg-teal text-cream',
     sections: [
       {
-        subtitle: "Cepillado Regular",
+        subtitle: 'Cepillado regular',
         items: [
-          "Semanal para razas de pelo corto",
-          "Diario para razas de pelo largo (Angora, etc.)",
-          "Más frecuente durante época de muda",
-          "Ayuda a prevenir bolas de pelo",
-          "Fortalece el vínculo con tu conejo"
+          'Semanal para razas de pelo corto',
+          'Diario para razas de pelo largo (Angora, etc.)',
+          'Más frecuente durante la época de muda',
+          'Ayuda a prevenir bolas de pelo',
+          'Fortalece el vínculo con tu conejo'
         ]
       },
       {
-        subtitle: "Cuidado de Uñas",
+        subtitle: 'Cuidado de uñas',
         items: [
-          "Cortar cada 4-6 semanas",
-          "Usar cortaúñas especiales para mascotas",
-          "Tener cuidado con la vena (parte rosada)",
-          "Si no te sientes seguro, llévalo al veterinario",
-          "Revisa regularmente el largo"
+          'Cortar cada 4-6 semanas',
+          'Usar cortaúñas especiales para mascotas',
+          'Cuidado con la vena (parte rosada)',
+          'Si no te sientes seguro, acude al veterinario',
+          'Revisa regularmente el largo'
         ]
       },
       {
-        subtitle: "Limpieza del Espacio",
+        subtitle: 'Limpieza del espacio',
         items: [
-          "Limpieza parcial 2-3 veces por semana",
-          "Cambio completo de sustrato semanalmente",
-          "Desinfectar accesorios regularmente",
-          "Limpiar caja de arena diariamente",
-          "Mantener zona libre de humedad"
+          'Limpieza parcial 2-3 veces por semana',
+          'Cambio completo de sustrato semanalmente',
+          'Desinfectar accesorios con regularidad',
+          'Limpiar la caja de arena a diario',
+          'Mantener la zona libre de humedad'
         ]
       }
     ]
@@ -82,37 +94,37 @@ const careCategories = [
   {
     id: 'exercise',
     icon: Activity,
-    title: "Ejercicio y Juego",
-    color: "bg-accent",
+    title: 'Ejercicio y juego',
+    color: 'bg-lime text-ink',
     sections: [
       {
-        subtitle: "Tiempo Fuera de la Jaula",
+        subtitle: 'Tiempo fuera de la jaula',
         items: [
-          "Mínimo 3-4 horas diarias",
-          "Idealmente en sesiones supervisadas",
-          "Espacio seguro para explorar",
-          "Protege cables eléctricos",
-          "Retira plantas tóxicas del área"
+          'Mínimo 3-4 horas diarias',
+          'Idealmente en sesiones supervisadas',
+          'Espacio seguro para explorar',
+          'Protege los cables eléctricos',
+          'Retira plantas tóxicas del área'
         ]
       },
       {
-        subtitle: "Enriquecimiento Ambiental",
+        subtitle: 'Enriquecimiento ambiental',
         items: [
-          "Túneles para explorar",
-          "Cajas de cartón para masticar",
-          "Plataformas a diferentes alturas",
-          "Juguetes que puedan mover y lanzar",
-          "Cambia los juguetes regularmente para mantener interés"
+          'Túneles para explorar',
+          'Cajas de cartón para masticar',
+          'Plataformas a diferentes alturas',
+          'Juguetes que pueda mover y lanzar',
+          'Cambia los juguetes para mantener el interés'
         ]
       },
       {
-        subtitle: "Beneficios del Ejercicio",
+        subtitle: 'Beneficios del ejercicio',
         items: [
-          "Previene obesidad",
-          "Estimula la mente",
-          "Reduce comportamientos destructivos",
-          "Fortalece músculos y huesos",
-          "Mejora la salud digestiva"
+          'Previene la obesidad',
+          'Estimula la mente',
+          'Reduce comportamientos destructivos',
+          'Fortalece músculos y huesos',
+          'Mejora la salud digestiva'
         ]
       }
     ]
@@ -120,164 +132,170 @@ const careCategories = [
   {
     id: 'social',
     icon: Users,
-    title: "Socialización",
-    color: "bg-primary",
+    title: 'Socialización',
+    color: 'bg-berry text-cream',
     sections: [
       {
-        subtitle: "Interacción Humana",
+        subtitle: 'Interacción humana',
         items: [
-          "Dedica tiempo diario de calidad",
-          "Habla suavemente a tu conejo",
-          "Respeta su espacio personal",
-          "Deja que se acerque a ti voluntariamente",
-          "Nunca fuerces la interacción"
+          'Dedica tiempo diario de calidad',
+          'Habla suavemente a tu conejo',
+          'Respeta su espacio personal',
+          'Deja que se acerque a ti voluntariamente',
+          'Nunca fuerces la interacción'
         ]
       },
       {
-        subtitle: "Convivencia con Otros Conejos",
+        subtitle: 'Convivencia con otros conejos',
         items: [
-          "Los conejos son animales sociales",
-          "Mejor en parejas esterilizadas",
-          "Macho y hembra funciona mejor",
-          "Introducción gradual y supervisada",
-          "Nunca los juntes sin presentación previa"
+          'Los conejos son animales sociales',
+          'Mejor en parejas esterilizadas',
+          'Macho y hembra funciona mejor',
+          'Introducción gradual y supervisada',
+          'Nunca los juntes sin presentación previa'
         ]
       },
       {
-        subtitle: "Manejo Apropiado",
+        subtitle: 'Manejo apropiado',
         items: [
-          "Nunca levantes por las orejas",
-          "Soporta bien la parte trasera",
-          "Mantenlo cerca de tu cuerpo",
-          "Si lucha, bájalo suavemente",
-          "Algunos conejos prefieren no ser cargados"
+          'Nunca levantes por las orejas',
+          'Soporta bien la parte trasera',
+          'Mantenlo cerca de tu cuerpo',
+          'Si lucha, bájalo suavemente',
+          'Algunos conejos prefieren no ser cargados'
         ]
       }
     ]
   }
 ];
 
+const quickTips = [
+  { icon: Rabbit, title: 'Tiempo de adaptación', text: 'Dale tiempo a tu conejo para adaptarse a su nuevo hogar. Puede tardar semanas en sentirse cómodo.', color: 'bg-primary text-primary-foreground' },
+  { icon: Stethoscope, title: 'Veterinario especializado', text: 'Busca un veterinario con experiencia en animales exóticos; no todos atienden conejos.', color: 'bg-teal text-cream' },
+  { icon: Thermometer, title: 'Control de temperatura', text: 'Los conejos son sensibles al calor. Mantén el ambiente fresco, especialmente en verano.', color: 'bg-coral text-ink' },
+  { icon: Scissors, title: 'Esterilización recomendada', text: 'La esterilización previene problemas de salud y mejora el comportamiento.', color: 'bg-berry text-cream' }
+];
+
 export default function CarePage() {
+  const [active, setActive] = useState('habitat');
+  const current = careCategories.find((c) => c.id === active) ?? careCategories[0];
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-accent text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
-              Cuidados Esenciales
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-              Proporcionar los cuidados adecuados asegura una vida larga y feliz para tu conejo
-            </p>
+    <div className="min-h-screen">
+      <Hero
+        image={HERO_IMAGES.care}
+        tint="bg-blush"
+        eyebrow="Bienestar diario"
+        title="Cuidados"
+        highlight="esenciales"
+        highlightColor="text-primary"
+        description="Proporcionar los cuidados adecuados asegura una vida larga y feliz para tu conejo."
+        badge="¡Con cariño!"
+        badgeColor="bg-primary text-primary-foreground"
+      />
+
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-4xl">
+          <Blob className="absolute -inset-6 h-auto w-auto text-primary/15" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
+            <ImageWithFallback
+              src={IMAGES.care}
+              alt="Cuidados de conejo"
+              className="h-[340px] w-full object-cover md:h-[440px]"
+            />
+          </div>
+          <Sparkle className="absolute -left-4 -top-4 h-12 w-12 text-mustard animate-float" />
+        </div>
+      </section>
+
+      <section className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {careCategories.map((category) => {
+            const Icon = category.icon;
+            const isActive = category.id === active;
+            return (
+              <button
+                key={category.id}
+                onClick={() => setActive(category.id)}
+                className={`flex items-center gap-3 rounded-2xl border-2 border-ink p-4 text-left transition-all ${
+                  isActive
+                    ? `${category.color} -translate-y-1 shadow-hard-lg`
+                    : 'bg-card text-ink shadow-hard hover:-translate-y-0.5'
+                }`}
+              >
+                <span
+                  className={`grid h-11 w-11 flex-shrink-0 place-items-center rounded-xl border-2 border-ink ${
+                    isActive ? 'bg-cream text-ink' : category.color
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+                <span className="font-bold leading-tight">{category.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 rounded-[2rem] border-4 border-ink bg-card p-8 shadow-hard md:p-10">
+          <div className="mb-8 flex items-center gap-4 border-b-2 border-dashed border-ink/20 pb-6">
+            <span className={`grid h-14 w-14 place-items-center rounded-2xl border-2 border-ink ${current.color}`}>
+              <current.icon className="h-7 w-7" />
+            </span>
+            <h2 className="text-3xl">{current.title}</h2>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {current.sections.map((section) => (
+              <div key={section.subtitle} className="rounded-2xl border-2 border-ink/10 bg-sand p-6">
+                <h3 className="mb-4 flex items-center gap-2 text-lg font-bold">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  {section.subtitle}
+                </h3>
+                <ul className="space-y-3">
+                  {section.items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm font-medium text-foreground/80">
+                      <span className="mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-full border-2 border-ink bg-lime text-ink">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Image Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl overflow-hidden shadow-2xl">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1767016627558-3f41c7432e2e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyYWJiaXQlMjBodXRjaCUyMGhhYml0YXR8ZW58MXx8fHwxNzczNTgwNTY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Hábitat de conejo"
-            className="w-full h-[400px] object-cover"
-          />
-        </div>
-      </section>
-
-      {/* Tabs Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Tabs defaultValue="habitat" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto gap-2 bg-transparent mb-8">
-            {careCategories.map((category) => {
-              const Icon = category.icon;
+      <section className="relative overflow-hidden bg-butter py-16">
+        <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
+        <Daisy className="absolute right-[8%] top-16 hidden h-16 w-16 text-coral lg:block" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <span className="font-script text-2xl text-terracotta">No lo olvides</span>
+            <h2 className="mt-2 text-3xl md:text-4xl">Consejos importantes</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {quickTips.map((tip) => {
+              const Icon = tip.icon;
               return (
-                <TabsTrigger
-                  key={category.id}
-                  value={category.id}
-                  className="flex flex-col items-center gap-2 p-4 data-[state=active]:bg-white data-[state=active]:shadow-lg rounded-xl"
+                <div
+                  key={tip.title}
+                  className="card-boho flex items-start gap-4 p-6 shadow-hard hover:-translate-y-1 hover:shadow-hard-lg"
                 >
-                  <div className={`p-3 rounded-lg ${category.color}`}>
-                    <Icon className="w-6 h-6 text-white" />
+                  <span className={`grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl border-2 border-ink ${tip.color}`}>
+                    <Icon className="h-6 w-6" />
+                  </span>
+                  <div>
+                    <p className="font-bold">{tip.title}</p>
+                    <p className="mt-1 text-sm text-foreground/70">{tip.text}</p>
                   </div>
-                  <span className="text-sm font-medium">{category.title}</span>
-                </TabsTrigger>
+                </div>
               );
             })}
-          </TabsList>
-
-          {careCategories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <TabsContent key={category.id} value={category.id} className="mt-0">
-                <Card className="border-0 shadow-xl">
-                  <CardHeader>
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className={`p-4 rounded-xl ${category.color}`}>
-                        <Icon className="w-8 h-8 text-white" />
-                      </div>
-                      <CardTitle className="text-3xl">{category.title}</CardTitle>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="space-y-8">
-                    {category.sections.map((section, idx) => (
-                      <div key={idx} className="bg-white p-6 rounded-xl border">
-                        <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                          <Sparkles className="w-5 h-5 text-purple-600" />
-                          {section.subtitle}
-                        </h3>
-                        <ul className="space-y-3">
-                          {section.items.map((item, i) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <div className="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
-                              <span className="text-gray-700">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            );
-          })}
-        </Tabs>
-      </section>
-
-      {/* Quick Tips */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="bg-secondary rounded-2xl p-8 text-white shadow-2xl">
-          <div className="flex items-start gap-4">
-            <div className="p-4 bg-white/20 rounded-xl backdrop-blur-sm">
-              <Heart className="w-8 h-8" />
-            </div>
-            <div className="flex-1">
-              <h3 className="text-3xl mb-4">Consejos Importantes</h3>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                  <p className="font-semibold mb-2">🐰 Tiempo de Adaptación</p>
-                  <p className="text-sm text-orange-50">Dale tiempo a tu conejo para adaptarse a su nuevo hogar. Puede tardar semanas en sentirse cómodo.</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                  <p className="font-semibold mb-2">🏥 Veterinario Especializado</p>
-                  <p className="text-sm text-orange-50">Busca un veterinario con experiencia en animales exóticos, no todos atienden conejos.</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                  <p className="font-semibold mb-2">🌡️ Control de Temperatura</p>
-                  <p className="text-sm text-orange-50">Los conejos son sensibles al calor. Mantén el ambiente fresco, especialmente en verano.</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl">
-                  <p className="font-semibold mb-2">✂️ Esterilización Recomendada</p>
-                  <p className="text-sm text-orange-50">La esterilización previene problemas de salud y mejora el comportamiento.</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-
-

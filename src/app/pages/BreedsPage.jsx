@@ -1,177 +1,193 @@
+import { Link } from 'react-router';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
-import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
-import { Badge } from '../components/ui/badge';
-import { Weight, Clock, Heart, Ruler } from 'lucide-react';
+import { Hero } from '../components/Hero';
+import { Blob, Sparkle, WaveDivider } from '../components/Decor';
+import { HERO_IMAGES, IMAGES } from '../constants/images';
+import { Weight, Clock, Heart, Ruler, Check, ArrowRight, Rabbit } from 'lucide-react';
 
 const breeds = [
   {
-    name: "Conejo Holandés Enano",
-    size: "Pequeño",
-    weight: "1-1.5 kg",
-    temperament: "Activo y amigable",
-    lifespan: "10-12 años",
-    description: "Una de las razas más populares como mascota. Son pequeños, adorables y muy sociables. Perfectos para vivir en apartamentos.",
-    characteristics: ["Muy sociable", "Fácil de entrenar", "Energético", "Requiere atención diaria"],
-    color: "blue"
+    name: 'Conejo Holandés Enano',
+    size: 'Pequeño',
+    weight: '1-1.5 kg',
+    temperament: 'Activo y amigable',
+    lifespan: '10-12 años',
+    description:
+      'Una de las razas más populares como mascota. Son pequeños, adorables y muy sociables, perfectos para vivir en apartamentos.',
+    characteristics: ['Muy sociable', 'Fácil de entrenar', 'Energético', 'Requiere atención diaria'],
+    color: 'bg-berry'
   },
   {
-    name: "Conejo Cabeza de León",
-    size: "Mediano",
-    weight: "1.5-2 kg",
-    temperament: "Tranquilo y dócil",
-    lifespan: "8-10 años",
-    description: "Caracterizado por su melena de pelo alrededor de la cabeza, similar a la de un león. Son cariñosos y gentiles.",
-    characteristics: ["Melena distintiva", "Calmado", "Bueno con niños", "Requiere cepillado regular"],
-    color: "orange"
+    name: 'Conejo Cabeza de León',
+    size: 'Mediano',
+    weight: '1.5-2 kg',
+    temperament: 'Tranquilo y dócil',
+    lifespan: '8-10 años',
+    description:
+      'Caracterizado por su melena de pelo alrededor de la cabeza, similar a la de un león. Son cariñosos y gentiles.',
+    characteristics: ['Melena distintiva', 'Calmado', 'Bueno con niños', 'Cepillado regular'],
+    color: 'bg-coral'
   },
   {
-    name: "Conejo Gigante de Flandes",
-    size: "Grande",
-    weight: "6-10 kg",
-    temperament: "Gentil y calmado",
-    lifespan: "5-8 años",
-    description: "Una de las razas más grandes. A pesar de su tamaño, son conocidos por ser muy tranquilos y dóciles.",
-    characteristics: ["Tamaño impresionante", "Muy gentil", "Necesita mucho espacio", "Come más que otras razas"],
-    color: "purple"
+    name: 'Conejo Gigante de Flandes',
+    size: 'Grande',
+    weight: '6-10 kg',
+    temperament: 'Gentil y calmado',
+    lifespan: '5-8 años',
+    description:
+      'Una de las razas más grandes. A pesar de su tamaño, son conocidos por ser muy tranquilos y dóciles.',
+    characteristics: ['Tamaño impresionante', 'Muy gentil', 'Mucho espacio', 'Come más que otras'],
+    color: 'bg-teal'
   },
   {
-    name: "Conejo Rex",
-    size: "Mediano",
-    weight: "3-4.5 kg",
-    temperament: "Inteligente y juguetón",
-    lifespan: "8-11 años",
-    description: "Reconocido por su pelaje aterciopelado único y su personalidad cariñosa. Muy inteligente.",
-    characteristics: ["Pelaje suave único", "Muy inteligente", "Juguetón", "Aprende trucos fácilmente"],
-    color: "green"
+    name: 'Conejo Rex',
+    size: 'Mediano',
+    weight: '3-4.5 kg',
+    temperament: 'Inteligente y juguetón',
+    lifespan: '8-11 años',
+    description:
+      'Reconocido por su pelaje aterciopelado único y su personalidad cariñosa. Es muy inteligente.',
+    characteristics: ['Pelaje suave único', 'Muy inteligente', 'Juguetón', 'Aprende trucos'],
+    color: 'bg-sage'
   },
   {
-    name: "Conejo Belier o Lop",
-    size: "Mediano",
-    weight: "2-3 kg",
-    temperament: "Dulce y sociable",
-    lifespan: "7-10 años",
-    description: "Caracterizados por sus orejas caídas. Son muy populares por su aspecto tierno y personalidad afectuosa.",
-    characteristics: ["Orejas caídas", "Muy cariñoso", "Excelente mascota", "Necesita limpieza de orejas"],
-    color: "pink"
+    name: 'Conejo Belier o Lop',
+    size: 'Mediano',
+    weight: '2-3 kg',
+    temperament: 'Dulce y sociable',
+    lifespan: '7-10 años',
+    description:
+      'Caracterizado por sus orejas caídas. Muy popular por su aspecto tierno y su personalidad afectuosa.',
+    characteristics: ['Orejas caídas', 'Muy cariñoso', 'Excelente mascota', 'Limpiar orejas'],
+    color: 'bg-rose'
   },
   {
-    name: "Conejo Angora",
-    size: "Mediano",
-    weight: "2-5 kg",
-    temperament: "Tranquilo y afectuoso",
-    lifespan: "7-12 años",
-    description: "Famoso por su largo y suave pelaje que requiere cepillado regular. Hermosos pero necesitan cuidado constante.",
-    characteristics: ["Pelaje muy largo", "Requiere cepillado diario", "Muy tranquilo", "Alto mantenimiento"],
-    color: "indigo"
+    name: 'Conejo Angora',
+    size: 'Mediano',
+    weight: '2-5 kg',
+    temperament: 'Tranquilo y afectuoso',
+    lifespan: '7-12 años',
+    description:
+      'Famoso por su largo y suave pelaje, que requiere cepillado regular. Hermoso, pero necesita cuidado constante.',
+    characteristics: ['Pelaje muy largo', 'Cepillado diario', 'Muy tranquilo', 'Alto mantenimiento'],
+    color: 'bg-primary'
   }
 ];
 
-const colorClasses = {
-  blue: 'bg-accent',
-  orange: 'bg-secondary',
-  purple: 'bg-primary',
-  green: 'bg-secondary',
-  pink: 'bg-accent',
-  indigo: 'bg-primary'
-};
-
 export default function BreedsPage() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-primary text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl mb-6">
-              Razas de Conejos
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto">
-              Descubre las características únicas de cada raza y encuentra el compañero perfecto para ti
-            </p>
+    <div className="min-h-screen">
+      <Hero
+        image={HERO_IMAGES.breeds}
+        tint="bg-cloud"
+        eyebrow="Más de 300 razas"
+        title="Razas de"
+        highlight="conejos"
+        highlightColor="text-teal"
+        description="Descubre las características únicas de cada raza y encuentra el compañero perfecto para tu hogar."
+        badge="¡Adopta!"
+        badgeColor="bg-teal text-cream"
+      />
+
+      <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-4xl">
+          <Blob className="absolute -inset-6 h-auto w-auto text-teal/20" />
+          <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
+            <ImageWithFallback
+              src={IMAGES.breeds}
+              alt="Diferentes razas de conejos"
+              className="h-[340px] w-full object-cover md:h-[440px]"
+            />
           </div>
+          <Sparkle className="absolute -right-4 -top-4 h-12 w-12 text-terracotta animate-float" />
         </div>
       </section>
 
-      {/* Image Section */}
-      <section className="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="rounded-2xl overflow-hidden shadow-2xl">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1589933767411-38a58367efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWZmZXJlbnQlMjByYWJiaXQlMjBicmVlZHN8ZW58MXx8fHwxNzczNTgwNTY0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-            alt="Diferentes razas de conejos"
-            className="w-full h-[400px] object-cover"
-          />
-        </div>
-      </section>
-
-      {/* Info Section */}
-      <section className="py-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-accent/10 rounded-2xl p-8 mb-12">
-          <h2 className="text-3xl mb-4 text-center">Más de 300 Razas en el Mundo</h2>
-          <p className="text-lg text-gray-700 text-center max-w-3xl mx-auto">
-            Existen más de 300 razas de conejos reconocidas en todo el mundo, cada una con características únicas. 
-            Aquí te presentamos algunas de las más populares como mascotas.
+      <section className="relative overflow-hidden bg-mustard py-14">
+        <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
+        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl text-accent-foreground md:text-3xl">Más de 300 razas en el mundo</h2>
+          <p className="mt-4 font-medium text-ink/80">
+            Existen más de 300 razas reconocidas en todo el mundo, cada una con características
+            únicas. Aquí te presentamos algunas de las más populares como mascotas.
           </p>
         </div>
+        <WaveDivider className="absolute bottom-0 left-0 h-10 w-full text-cream" />
       </section>
 
-      {/* Breeds Grid */}
-      <section className="pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {breeds.map((breed, index) => (
-            <Card key={index} className="hover:shadow-2xl transition-all duration-300 border-0 overflow-hidden group">
-              <div className={`h-2 ${colorClasses[breed.color]}`}></div>
-              
-              <CardHeader>
-                <CardTitle className="text-2xl group-hover:text-purple-600 transition-colors">
-                  {breed.name}
-                </CardTitle>
-                <div className="flex flex-wrap gap-2 mt-3">
-                  <Badge variant="secondary" className="flex items-center gap-1">
-                    <Ruler className="w-3 h-3" />
-                    {breed.size}
-                  </Badge>
-                  <Badge variant="secondary" className="flex items-center gap-1">
-                    <Weight className="w-3 h-3" />
-                    {breed.weight}
-                  </Badge>
-                  <Badge variant="secondary" className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    {breed.lifespan}
-                  </Badge>
+      <section className="relative overflow-hidden py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <Blob className="absolute -left-24 top-20 h-72 w-72 text-mint" />
+        <div className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {breeds.map((breed) => (
+            <article
+              key={breed.name}
+              className="card-boho group flex flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+            >
+              <div className={`flex items-center justify-between border-b-2 border-ink px-6 py-4 text-cream ${breed.color}`}>
+                <Rabbit className="h-8 w-8" />
+                <span className="rounded-full border-2 border-ink bg-cream px-3 py-1 text-xs font-bold text-ink">
+                  {breed.size}
+                </span>
+              </div>
+
+              <div className="flex flex-1 flex-col p-7">
+                <h3 className="text-xl leading-tight">{breed.name}</h3>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {[
+                    { icon: Ruler, value: breed.size },
+                    { icon: Weight, value: breed.weight },
+                    { icon: Clock, value: breed.lifespan }
+                  ].map(({ icon: Icon, value }) => (
+                    <span
+                      key={value}
+                      className="inline-flex items-center gap-1.5 rounded-full border-2 border-ink/10 bg-muted px-3 py-1 text-xs font-bold text-ink/80"
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                      {value}
+                    </span>
+                  ))}
                 </div>
-              </CardHeader>
-              
-              <CardContent className="space-y-4">
-                <div className="flex items-start gap-2">
-                  <Heart className="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5" />
+
+                <div className="mt-5 flex items-start gap-3 rounded-2xl border-2 border-ink/10 bg-blush p-4">
+                  <Heart className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                   <div>
-                    <p className="text-sm text-gray-500 mb-1">Temperamento</p>
-                    <p className="font-medium">{breed.temperament}</p>
+                    <p className="text-xs font-bold uppercase tracking-wide text-primary">
+                      Temperamento
+                    </p>
+                    <p className="font-bold text-ink">{breed.temperament}</p>
                   </div>
                 </div>
-                
-                <p className="text-gray-600">
-                  {breed.description}
-                </p>
-                
-                <div className="pt-4 border-t">
-                  <p className="text-sm font-semibold mb-2 text-gray-700">Características:</p>
-                  <ul className="space-y-1">
-                    {breed.characteristics.map((char, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                        <span className={`text-purple-500 mt-0.5`}>✓</span>
-                        <span>{char}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
+
+                <p className="mt-5 text-sm leading-relaxed text-foreground/70">{breed.description}</p>
+
+                <ul className="mt-6 flex-1 space-y-2 border-t-2 border-dashed border-ink/15 pt-5">
+                  {breed.characteristics.map((char) => (
+                    <li key={char} className="flex items-center gap-2 text-sm font-medium text-foreground/80">
+                      <span className="grid h-5 w-5 flex-shrink-0 place-items-center rounded-full border-2 border-ink bg-lime text-ink">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      {char}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Link
+            to="/alimentacion"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-primary px-8 py-4 font-bold text-primary-foreground shadow-hard transition-all hover:-translate-y-0.5 hover:shadow-hard-lg"
+          >
+            Descubre cómo alimentarlos
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
         </div>
       </section>
     </div>
   );
 }
-
-
