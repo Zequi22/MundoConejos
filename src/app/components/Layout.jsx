@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { SmoothScroll } from './SmoothScroll';
 
 const footerWaveByRoute = {
   '/': 'text-teal',
@@ -16,13 +17,15 @@ export function Layout() {
   const topWaveColor = footerWaveByRoute[location.pathname] || 'text-cream';
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer topWaveColor={topWaveColor} />
-    </div>
+    <SmoothScroll>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer topWaveColor={topWaveColor} />
+      </div>
+    </SmoothScroll>
   );
 }
 

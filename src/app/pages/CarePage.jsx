@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/Hero';
 import { Blob, Daisy, Sparkle, WaveDivider } from '../components/Decor';
+import { Reveal } from '../components/Reveal';
 import { HERO_IMAGES, IMAGES } from '../constants/images';
 import {
   Home,
@@ -195,7 +196,7 @@ export default function CarePage() {
       />
 
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-4xl">
+        <Reveal variant="zoom" className="relative mx-auto max-w-4xl">
           <Blob className="absolute -inset-6 h-auto w-auto text-primary/15" />
           <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
             <ImageWithFallback
@@ -205,11 +206,11 @@ export default function CarePage() {
             />
           </div>
           <Sparkle className="absolute -left-4 -top-4 h-12 w-12 text-mustard animate-float" />
-        </div>
+        </Reveal>
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal variant="up" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {careCategories.map((category) => {
             const Icon = category.icon;
             const isActive = category.id === active;
@@ -234,9 +235,9 @@ export default function CarePage() {
               </button>
             );
           })}
-        </div>
+        </Reveal>
 
-        <div className="mt-8 rounded-[2rem] border-4 border-ink bg-card p-8 shadow-hard md:p-10">
+        <Reveal variant="up" className="mt-8 rounded-[2rem] border-4 border-ink bg-card p-8 shadow-hard md:p-10">
           <div className="mb-8 flex items-center gap-4 border-b-2 border-dashed border-ink/20 pb-6">
             <span className={`grid h-14 w-14 place-items-center rounded-2xl border-2 border-ink ${current.color}`}>
               <current.icon className="h-7 w-7" />
@@ -264,24 +265,24 @@ export default function CarePage() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="relative overflow-hidden bg-butter py-16">
         <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
         <Daisy className="absolute right-[8%] top-16 hidden h-16 w-16 text-coral lg:block" />
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
+          <Reveal className="mb-10 text-center">
             <span className="font-script text-2xl text-terracotta">No lo olvides</span>
             <h2 className="mt-2 text-3xl md:text-4xl">Consejos importantes</h2>
-          </div>
+          </Reveal>
           <div className="grid gap-6 md:grid-cols-2">
-            {quickTips.map((tip) => {
+            {quickTips.map((tip, index) => {
               const Icon = tip.icon;
               return (
+                <Reveal key={tip.title} variant="up" delay={index * 0.1} className="h-full">
                 <div
-                  key={tip.title}
-                  className="card-boho flex items-start gap-4 p-6 shadow-hard hover:-translate-y-1 hover:shadow-hard-lg"
+                  className="card-boho flex h-full items-start gap-4 p-6 shadow-hard hover:-translate-y-1 hover:shadow-hard-lg"
                 >
                   <span className={`grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl border-2 border-ink ${tip.color}`}>
                     <Icon className="h-6 w-6" />
@@ -291,6 +292,7 @@ export default function CarePage() {
                     <p className="mt-1 text-sm text-foreground/70">{tip.text}</p>
                   </div>
                 </div>
+                </Reveal>
               );
             })}
           </div>

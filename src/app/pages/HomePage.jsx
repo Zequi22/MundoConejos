@@ -3,6 +3,7 @@ import { ArrowRight, Heart, Shield, BookOpen, Stethoscope, Apple, Rabbit, Sparkl
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/Hero';
 import { Blob, Sparkle, Daisy, WaveDivider, Rainbow } from '../components/Decor';
+import { Reveal } from '../components/Reveal';
 import { HERO_IMAGES, IMAGES } from '../constants/images';
 
 const features = [
@@ -112,14 +113,15 @@ export default function HomePage() {
 
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className={`rounded-3xl border-2 border-ink p-6 text-center shadow-hard ${stat.color} ${stat.rotate} transition-transform hover:rotate-0`}
-            >
-              <div className="font-display text-3xl font-bold md:text-4xl">{stat.value}</div>
-              <div className="mt-1 text-xs font-bold opacity-90 md:text-sm">{stat.label}</div>
-            </div>
+          {stats.map((stat, index) => (
+            <Reveal key={stat.label} variant="up" delay={index * 0.08} className="h-full">
+              <div
+                className={`h-full rounded-3xl border-2 border-ink p-6 text-center shadow-hard transition-transform hover:rotate-0 ${stat.color} ${stat.rotate}`}
+              >
+                <div className="font-display text-3xl font-bold md:text-4xl">{stat.value}</div>
+                <div className="mt-1 text-xs font-bold opacity-90 md:text-sm">{stat.label}</div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -127,7 +129,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden py-16 md:py-24">
         <Blob className="absolute -right-24 top-10 h-72 w-72 text-mint" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
+          <Reveal className="mx-auto mb-14 max-w-2xl text-center">
             <Rainbow className="mx-auto mb-3 h-12 w-16" />
             <span className="font-script text-2xl text-teal">Explora la guía</span>
             <h2 className="mt-2 text-3xl md:text-4xl">
@@ -136,17 +138,22 @@ export default function HomePage() {
             <p className="mt-4 text-foreground/70">
               Cuatro áreas esenciales para comprender y cuidar a tu conejo con confianza.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid gap-8 md:grid-cols-2">
-            {features.map((feature) => {
+            {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <Link
+                <Reveal
                   key={feature.title}
-                  to={feature.link}
-                  className="card-boho group flex flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+                  variant={index % 2 === 0 ? 'left' : 'right'}
+                  delay={index * 0.08}
+                  className="h-full"
                 >
+                  <Link
+                    to={feature.link}
+                    className="card-boho group flex h-full flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+                  >
                   <div className="relative h-52 overflow-hidden border-b-2 border-ink">
                     <ImageWithFallback
                       src={feature.image}
@@ -168,7 +175,8 @@ export default function HomePage() {
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1.5" />
                     </span>
                   </div>
-                </Link>
+                  </Link>
+                </Reveal>
               );
             })}
           </div>
@@ -179,7 +187,7 @@ export default function HomePage() {
         <WaveDivider className="absolute left-0 top-0 h-12 w-full rotate-180 text-cream" />
         <Daisy className="absolute left-[6%] top-24 hidden h-16 w-16 text-sky lg:block" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <div className="relative">
+          <Reveal variant="left" className="relative">
             <Blob className="absolute -inset-6 h-auto w-auto text-mustard/60" />
             <div className="relative overflow-hidden rounded-t-full border-4 border-ink shadow-hard-lg">
               <ImageWithFallback
@@ -191,9 +199,9 @@ export default function HomePage() {
             <span className="absolute -left-4 bottom-10 rotate-[-6deg] rounded-2xl border-2 border-ink bg-terracotta px-5 py-3 font-script text-2xl text-cream shadow-hard">
               ¡Con cariño!
             </span>
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal variant="right">
             <span className="font-script text-2xl text-primary">Nuestra filosofía</span>
             <h2 className="mt-2 text-3xl md:text-4xl">
               Cada conejo merece una vida larga y feliz
@@ -216,7 +224,7 @@ export default function HomePage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
         <WaveDivider className="absolute bottom-0 left-0 h-12 w-full text-cream" />
       </section>
@@ -225,7 +233,7 @@ export default function HomePage() {
         <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
         <Blob className="absolute -right-20 -top-10 h-72 w-72 text-cream/15" />
         <Sparkle className="absolute left-[12%] top-14 h-10 w-10 text-mustard" />
-        <div className="relative mx-auto max-w-3xl text-center">
+        <Reveal variant="zoom" className="relative mx-auto max-w-3xl text-center">
           <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border-2 border-cream/30 bg-terracotta text-cream shadow-[5px_5px_0_0_#fff8ee]">
             <Shield className="h-8 w-8" />
           </span>
@@ -241,7 +249,7 @@ export default function HomePage() {
             Ver preguntas frecuentes
             <ArrowRight className="h-5 w-5" />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

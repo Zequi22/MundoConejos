@@ -1,6 +1,7 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/Hero';
 import { Blob, Sparkle, WaveDivider, Daisy } from '../components/Decor';
+import { Reveal } from '../components/Reveal';
 import { HERO_IMAGES, IMAGES } from '../constants/images';
 import { Check, Wheat, Leaf, Sprout, Carrot, Salad, CircleX, Droplet, Apple } from 'lucide-react';
 
@@ -86,7 +87,7 @@ export default function NutritionPage() {
       />
 
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-4xl">
+        <Reveal variant="zoom" className="relative mx-auto max-w-4xl">
           <Blob className="absolute -inset-6 h-auto w-auto text-sage/20" />
           <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
             <ImageWithFallback
@@ -96,22 +97,22 @@ export default function NutritionPage() {
             />
           </div>
           <Daisy className="absolute -left-4 -bottom-4 h-14 w-14 text-rose" />
-        </div>
+        </Reveal>
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-8 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-12 max-w-2xl text-center">
           <span className="font-script text-2xl text-primary">Proporciones diarias</span>
           <h2 className="mt-2 text-3xl md:text-4xl">Componentes de una dieta balanceada</h2>
-        </div>
+        </Reveal>
 
         <div className="grid gap-8 md:grid-cols-3">
-          {dietComponents.map((component) => {
+          {dietComponents.map((component, index) => {
             const Icon = component.icon;
             return (
+              <Reveal key={component.title} variant="up" delay={index * 0.12} className="h-full">
               <article
-                key={component.title}
-                className="card-boho overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+                className="card-boho h-full overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
               >
                 <div className={`flex items-center justify-between border-b-2 border-ink px-6 py-5 ${component.color}`}>
                   <span className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink bg-cream text-ink">
@@ -142,6 +143,7 @@ export default function NutritionPage() {
                   </ul>
                 </div>
               </article>
+              </Reveal>
             );
           })}
         </div>
@@ -149,7 +151,7 @@ export default function NutritionPage() {
 
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2">
-          <div className="rounded-[2rem] border-4 border-ink bg-mint p-8 shadow-hard">
+          <Reveal variant="left" className="rounded-[2rem] border-4 border-ink bg-mint p-8 shadow-hard">
             <div className="mb-6 flex items-center gap-3">
               <span className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink bg-lime text-ink">
                 <Check className="h-6 w-6" />
@@ -177,9 +179,9 @@ export default function NutritionPage() {
                 );
               })}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="rounded-[2rem] border-4 border-ink bg-blush p-8 shadow-hard">
+          <Reveal variant="right" className="rounded-[2rem] border-4 border-ink bg-blush p-8 shadow-hard">
             <div className="mb-6 flex items-center gap-3">
               <span className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink bg-destructive text-cream">
                 <CircleX className="h-6 w-6" />
@@ -204,14 +206,14 @@ export default function NutritionPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="relative overflow-hidden bg-sky px-4 pt-16 pb-20 sm:px-6 lg:px-8">
         <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
         <Blob className="absolute -right-16 -top-10 h-64 w-64 text-cloud/50" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[auto_1fr]">
+        <Reveal variant="up" className="relative mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[auto_1fr]">
           <span className="grid h-20 w-20 place-items-center rounded-3xl border-2 border-ink bg-cream text-sky shadow-hard">
             <Droplet className="h-10 w-10" />
           </span>
@@ -238,7 +240,7 @@ export default function NutritionPage() {
               ))}
             </ul>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router';
 import { Hero } from '../components/Hero';
 import { Blob, Sparkle, Daisy, WaveDivider } from '../components/Decor';
+import { Reveal } from '../components/Reveal';
 import { HERO_IMAGES } from '../constants/images';
 import { Rabbit, Salad, Stethoscope, MessageCircle, HelpCircle, ChevronDown, ArrowRight } from 'lucide-react';
 
@@ -143,7 +144,7 @@ export default function FAQPage() {
           {faqCategories.map((cat, catIndex) => {
             const Icon = cat.icon;
             return (
-              <div key={cat.category}>
+              <Reveal key={cat.category} variant="up">
                 <div className="mb-6 flex items-center gap-4">
                   <span className={`grid h-14 w-14 flex-shrink-0 place-items-center rounded-2xl border-2 border-ink shadow-hard ${cat.color}`}>
                     <Icon className="h-7 w-7" />
@@ -188,7 +189,7 @@ export default function FAQPage() {
                     );
                   })}
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>
@@ -198,7 +199,7 @@ export default function FAQPage() {
         <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
         <Daisy className="absolute right-[10%] top-12 hidden h-16 w-16 text-mustard lg:block" />
         <Sparkle className="absolute left-[8%] bottom-10 h-10 w-10 text-cream" />
-        <div className="relative mx-auto max-w-3xl text-center">
+        <Reveal variant="zoom" className="relative mx-auto max-w-3xl text-center">
           <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border-2 border-ink bg-cream text-terracotta shadow-hard">
             <MessageCircle className="h-8 w-8" />
           </span>
@@ -214,7 +215,7 @@ export default function FAQPage() {
             Ver guía de salud
             <ArrowRight className="h-5 w-5" />
           </Link>
-        </div>
+        </Reveal>
       </section>
     </div>
   );

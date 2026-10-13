@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/Hero';
 import { Blob, Sparkle, WaveDivider } from '../components/Decor';
+import { Reveal } from '../components/Reveal';
 import { HERO_IMAGES, IMAGES } from '../constants/images';
 import { Weight, Clock, Heart, Ruler, Check, ArrowRight, Rabbit } from 'lucide-react';
 
@@ -90,7 +91,7 @@ export default function BreedsPage() {
       />
 
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-4xl">
+        <Reveal variant="zoom" className="relative mx-auto max-w-4xl">
           <Blob className="absolute -inset-6 h-auto w-auto text-teal/20" />
           <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
             <ImageWithFallback
@@ -100,18 +101,18 @@ export default function BreedsPage() {
             />
           </div>
           <Sparkle className="absolute -right-4 -top-4 h-12 w-12 text-terracotta animate-float" />
-        </div>
+        </Reveal>
       </section>
 
       <section className="relative overflow-hidden bg-mustard py-14">
         <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
-        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
+        <Reveal variant="up" className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
           <h2 className="text-2xl text-accent-foreground md:text-3xl">Más de 300 razas en el mundo</h2>
           <p className="mt-4 font-medium text-ink/80">
             Existen más de 300 razas reconocidas en todo el mundo, cada una con características
             únicas. Aquí te presentamos algunas de las más populares como mascotas.
           </p>
-        </div>
+        </Reveal>
         <WaveDivider className="absolute bottom-0 left-0 h-10 w-full text-cream" />
       </section>
 
@@ -119,10 +120,15 @@ export default function BreedsPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Blob className="absolute -left-24 top-20 h-72 w-72 text-mint" />
         <div className="relative grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {breeds.map((breed) => (
-            <article
+          {breeds.map((breed, index) => (
+            <Reveal
               key={breed.name}
-              className="card-boho group flex flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+              variant="up"
+              delay={(index % 3) * 0.1}
+              className="h-full"
+            >
+            <article
+              className="card-boho group flex h-full flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
             >
               <div className={`flex items-center justify-between border-b-2 border-ink px-6 py-4 text-cream ${breed.color}`}>
                 <Rabbit className="h-8 w-8" />
@@ -174,10 +180,11 @@ export default function BreedsPage() {
                 </ul>
               </div>
             </article>
+            </Reveal>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <Reveal variant="up" className="mt-16 text-center">
           <Link
             to="/alimentacion"
             className="inline-flex items-center gap-2 rounded-full border-2 border-ink bg-primary px-8 py-4 font-bold text-primary-foreground shadow-hard transition-all hover:-translate-y-0.5 hover:shadow-hard-lg"
@@ -185,7 +192,7 @@ export default function BreedsPage() {
             Descubre cómo alimentarlos
             <ArrowRight className="h-5 w-5" />
           </Link>
-        </div>
+        </Reveal>
         </div>
       </section>
     </div>

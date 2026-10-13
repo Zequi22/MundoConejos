@@ -1,6 +1,7 @@
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
 import { Hero } from '../components/Hero';
 import { Blob, Sparkle, WaveDivider } from '../components/Decor';
+import { Reveal } from '../components/Reveal';
 import { HERO_IMAGES, IMAGES } from '../constants/images';
 import {
   AlertCircle,
@@ -98,7 +99,7 @@ export default function HealthPage() {
       />
 
       <section className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="relative mx-auto max-w-4xl">
+        <Reveal variant="zoom" className="relative mx-auto max-w-4xl">
           <Blob className="absolute -inset-6 h-auto w-auto text-teal/15" />
           <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-ink shadow-hard-lg">
             <ImageWithFallback
@@ -107,9 +108,9 @@ export default function HealthPage() {
               className="h-[320px] w-full object-cover md:h-[420px]"
             />
           </div>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 flex flex-col gap-4 rounded-[2rem] border-4 border-ink bg-butter p-6 shadow-hard md:flex-row md:items-start md:p-8">
+        <Reveal variant="up" className="mt-12 flex flex-col gap-4 rounded-[2rem] border-4 border-ink bg-butter p-6 shadow-hard md:flex-row md:items-start md:p-8">
           <span className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-2xl border-2 border-ink bg-mustard text-ink">
             <Activity className="h-6 w-6" />
           </span>
@@ -121,22 +122,27 @@ export default function HealthPage() {
               significativo requiere atención veterinaria inmediata.
             </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="relative mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <Reveal className="mx-auto mb-12 max-w-2xl text-center">
           <span className="font-script text-2xl text-primary">Señales de alerta</span>
           <h2 className="mt-2 text-3xl md:text-4xl">Problemas de salud comunes</h2>
-        </div>
+        </Reveal>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {commonIssues.map((issue) => {
+          {commonIssues.map((issue, index) => {
             const high = issue.urgency === 'high';
             return (
-              <article
+              <Reveal
                 key={issue.title}
-                className="card-boho flex flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
+                variant="up"
+                delay={(index % 3) * 0.1}
+                className="h-full"
+              >
+              <article
+                className="card-boho flex h-full flex-col overflow-hidden shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg"
               >
                 <div className={`h-2 ${high ? 'bg-destructive' : 'bg-coral'}`} />
                 <div className="flex flex-1 flex-col p-7">
@@ -175,6 +181,7 @@ export default function HealthPage() {
                   </div>
                 </div>
               </article>
+              </Reveal>
             );
           })}
         </div>
@@ -184,16 +191,17 @@ export default function HealthPage() {
         <WaveDivider className="absolute left-0 top-0 h-10 w-full rotate-180 text-cream" />
         <WaveDivider className="absolute bottom-0 left-0 h-10 w-full text-cream" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="font-script text-2xl text-sage">Rutina preventiva</span>
             <h2 className="mt-2 text-3xl md:text-4xl">Lista de verificación de salud</h2>
-          </div>
+          </Reveal>
 
           <div className="grid gap-6 md:grid-cols-3">
-            {checklistCards.map((card) => {
+            {checklistCards.map((card, index) => {
               const Icon = card.icon;
               return (
-                <div key={card.key} className="card-boho p-7 shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg">
+                <Reveal key={card.key} variant="up" delay={index * 0.12} className="h-full">
+                <div className="card-boho h-full p-7 shadow-hard hover:-translate-y-1.5 hover:shadow-hard-lg">
                   <div className="mb-5 flex items-center gap-3">
                     <span className={`grid h-12 w-12 place-items-center rounded-2xl border-2 border-ink ${card.color}`}>
                       <Icon className="h-6 w-6" />
@@ -211,6 +219,7 @@ export default function HealthPage() {
                     ))}
                   </ul>
                 </div>
+                </Reveal>
               );
             })}
           </div>
@@ -220,7 +229,7 @@ export default function HealthPage() {
       <section className="relative mt-20 overflow-hidden bg-destructive px-4 py-20 text-cream sm:px-6 md:mt-28 lg:px-8">
         <Blob className="absolute -right-20 -top-12 h-72 w-72 text-ink/15" />
         <Sparkle className="absolute left-[10%] bottom-12 h-10 w-10 text-mustard" />
-        <div className="relative mx-auto max-w-6xl">
+        <Reveal variant="up" className="relative mx-auto max-w-6xl">
           <div className="flex flex-col gap-6 md:flex-row md:items-start">
             <span className="grid h-16 w-16 flex-shrink-0 place-items-center rounded-2xl border-2 border-cream/40 bg-cream text-destructive shadow-[5px_5px_0_0_#3b2a1f]">
               <AlertTriangle className="h-8 w-8" />
@@ -257,7 +266,7 @@ export default function HealthPage() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
     </div>
   );
